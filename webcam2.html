@@ -1,0 +1,73 @@
+<!-- ca ne marche pas en local, ca vous prend un serveur qui roule -->
+
+
+<html>
+<head>
+<title>Prendre une photo webcam avec HTML5</title>
+<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+</head>
+<body>
+	<h1>Marche avec Chrome, TESTER AVEC Opera, MAIS SURTOUT IE + chrome ex</h1>
+
+	<video id="video" width="320" height="240" autoplay></video>
+	<button id="snap" >Take Photo</button>
+    <button id="send" >Send Photo</button>
+	<canvas id="canvas" width="320" height="240"></canvas>
+
+
+
+	<script>
+
+	    // Put event listeners into place
+	    window.onload = function () {
+	        // Grab elements, create settings, etc.
+	        var canvas = document.getElementById("canvas");
+	        var context = canvas.getContext("2d");
+	        var video = document.getElementById("video"),
+				videoObj = { "video": true },
+				errBack = function (error) {
+				    console.log("Video capture error: ", error.code);
+				};
+
+	        // Put video listeners into place
+	        if (navigator.getUserMedia) { // Standard
+	            navigator.getUserMedia(videoObj, function (stream) {
+	                video.src = stream;
+	                video.play();
+	            }, errBack);
+	        } else if (navigator.webkitGetUserMedia) { // WebKit-prefixed
+	            navigator.webkitGetUserMedia(videoObj, function (stream) {
+	                video.src = window.webkitURL.createObjectURL(stream);
+	                video.play();
+	            }, errBack);
+	        }
+
+	        // Trigger photo take
+	        $("#snap").click(function () {
+	            context.drawImage(video, 0, 0, 320, 240);
+	        });
+	        $("#send").click(function () {
+	            sendPicture();
+	        });
+	    };
+
+	    function sendPicture() {
+	        event.preventDefault();
+	        var b64 = document.getElementById("canvas")
+			.toDataURL("image/png");
+	        b64 = b64.replace('data:image/png;base64,', '');
+	        console.log("Image   " + b64);
+	        $.ajax({
+	            type: 'POST',
+	            url: '/About.aspx',
+	            data: { "data": b64 },
+	            success: function (msg) {
+	                alert("Uploaded successfully");
+	            }
+	        });
+	    }
+		
+	</script>
+
+</body>
+</html>

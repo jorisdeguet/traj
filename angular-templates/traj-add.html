@@ -1,0 +1,48 @@
+<div class="row" ng-controller="AddEditController">
+
+	<div class="col-md-4 well">
+		<form class="form-signin" role="form" novalidate>
+			<h2 class="form-signin-heading">Quoi</h2>
+			<label for="inputEmail" class="sr-only">Courriel</label> 
+			<input class="form-control"  placeholder="Titre"
+				ng-model="event.title"  /> 
+			<textarea class="form-control"  
+				rows="10" placeholder="Description" ng-model="event.description">
+			</textarea>
+			<input class="form-control"  placeholder="Tags"
+				ng-model="event.tags"  /> 
+		</form>
+	</div>
+	<div class="col-md-4 well">
+		<form class="form-signin" role="form" novalidate>
+			<h2 class="form-signin-heading">Où</h2>
+			<input id="address" type="textbox" ng-model="event.place" placeholder="Ville, Pays">
+      		<input class="btn btn-primary btn-mini" type="button" value="Geocode" ng-click="codeAddress()">
+			
+			<div  map-canvas2  id="map-canvas" style="height:250px;width:100%;"></div>
+			
+		</form>
+	</div>
+	<div class="col-md-4 well">
+		<form class="form-signin" role="form" novalidate>
+			<h2 class="form-signin-heading">Quand</h2>
+			
+			<select class="form-control" ng-model="event.type">
+			  <option value="Ponctual">Ponctuel</option>
+			  <option value="Period">Période</option>
+			  
+			</select>
+			<div>
+        		<datepicker ng-model="event.date"  show-weeks="true" class="well well-sm"></datepicker>
+    		</div>
+			
+		</form>
+	</div>
+	<div class="col-md-12 well">
+		<button ng-click="add(event)"
+				class="btn btn-lg btn-primary btn-block">{{ 'SAVE' | translate}}</button>
+		<pre>TOCREATE = {{event | json}}</pre>
+	</div>
+
+	
+</div>

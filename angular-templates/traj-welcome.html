@@ -1,0 +1,33 @@
+<div class="row" ng-controller="MainController">
+
+	<div class="col-md-12">
+		<div class="jumbotron well">
+			<h1>Bienvenue dans Traj</h1>
+			<p>Traj est une interface web pour définir votre trajectoire sur la planète, dans le temps.</p>
+			<p>
+				Traj ne stocke aucune information en dehors de votre navigateur. 
+				Bas besoin de compte ou de mot de passe. 
+				Nous utilisons soit le stockage du navigateur soit un fichier que vous sauvez où vous le souhaitez.
+			</p>
+			<p>
+				Vous pouvez partager une partie de votre trajectoire par courriel avec vos proches.	
+			</p>
+		</div>
+	</div>
+
+	<div class="col-md-4">
+		Start yours
+	</div>
+
+	<div class="col-md-4">
+		Load yours
+		
+		<input type="file" id="fileForUpload" />
+		<button class="btn btn-primary" ng-click="load();">charger</button>
+		<p id="fileContents"></p>
+	</div>
+	
+	<div class="col-md-4">
+		Save it for later
+	</div>
+</div>

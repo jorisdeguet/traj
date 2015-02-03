@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html ng-app="traj">
+<head>
+	<title>Traj</title>
+	<meta charset="utf-8">
+	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- 	<script src="/simile/timeline_ajax/simile-ajax-api.js?bundle=true" -->
+<!-- 	type="text/javascript"></script> -->
+<!--     <script src="/simile/timeline_js/timeline-api.js?bundle=true" -->
+<!-- 	type="text/javascript"></script> -->
+
+
+	<style>
+		body {
+			padding-top: 20px;
+			padding-bottom: 70px;
+		}
+	</style>
+	<script>
+
+	function afficher(){
+		var file = document.getElementById("fileForUpload").files[0];
+		if (file) {
+		    var reader = new FileReader();
+		    reader.readAsText(file, "UTF-8");
+		    reader.onload = function (evt) {
+		        document.getElementById("fileContents").innerHTML = evt.target.result;
+		    }
+		    reader.onerror = function (evt) {
+		        document.getElementById("fileContents").innerHTML = "error reading file";
+		    }
+		}
+	}
+
+	function sauver(){
+		var json = "{event:'pipoéé'}";
+		var dataURI = 'data:application/json;charset=utf-8,' + encodeURIComponent(json);
+		console.log(json);
+		console.log(dataURI);
+		window.open(dataURI,'_blank');
+	}
+
+	</script>
+
+</head>
+<body>
+	<nav class="navbar navbar-default navbar-fixed-bottom">
+	  <div class="container">
+	    <ul class="nav navbar-nav navbar-left" ng-controller="NavbarController">
+			<li><a href="#welcome">{{ 'TITLE' | translate }}</a></li>
+			<li><a href="#add">{{ 'ADD' | translate }}</a></li>
+			<li><a href="#main">{{ 'MAP' | translate }}</a></li>
+			<li><a href="#list">{{ 'LIST' | translate }}</a></li>
+			<li><a download ng-click="save();">{{ 'SAVE' | translate }}</a></li>
+			<li><a ng-click="empty();">{{ 'FLUSH' | translate }}</a></li>
+
+		</ul>
+		<ul class="nav navbar-nav navbar-right" ng-controller="LocaleController">
+			<li><a ng-click="changeLanguage('en')">en</a></li>
+			<li><a ng-click="changeLanguage('fr')">fr</a></li>
+			<li class="dropdown">
+				<a  class="dropdown-toggle" data-toggle="dropdown">
+					{{ 'LANGUAGE' | translate }}<span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu" role="menu">
+					<li><a ng-click="changeLanguage('en')">English</a></li>
+					<li><a ng-click="changeLanguage('fr')">Français</a></li>
+					<li><a ng-click="changeLanguage('de')">Deutsch</a></li>
+					<li><a ng-click="changeLanguage('es')">Español</a></li>
+				</ul>
+			</li>
+		</ul>
+	  </div>
+	</nav>
+	<div class="container">
+		<div class="ng-view"></div>
+
+	</div>
+
+
+
+	<!-- scripts -->
+
+	<script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+	<script src="libs/jquery-1.11.1.min.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="libs/jquery-ui.js"></script>
+	<script src="libs/spin.min.js"></script>
+	<script src="libs/jquery-ui-i18n.min.js"></script>
+	<script src="libs/angular.js"></script>
+	<script src="libs/angular-route.js"></script>
+	<script src="libs/angular-translate.js"></script>
+	<script src="libs/angular-spinner.js"></script>
+	<script src="libs/ui-bootstrap-tpls-0.12.0.js"></script>
+	<script src="libs/angular-locale_fr-fr.js"></script>
+
+	<!-- application code -->
+	<script src="code-js/traj.js"></script>
+</body>
+</html>
