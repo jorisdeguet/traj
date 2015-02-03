@@ -187,48 +187,46 @@ traj.controller('AddEditController', function ($scope, $modal, $window, $locatio
 });
 
 traj.controller('MainController', function ($scope, $modal, $window, $rootScope ,$location, $http, usSpinnerService) {
-  $scope.markersMap = {};
-  var info = new google.maps.InfoWindow({content: ""});
-	$scope.coucou = function() {
-		items.clear();
-		console.log("map");
-		console.log(map);
-		if (typeof $rootScope.traj != 'undefined'){
-			var marker;
-			console.log("Main is starting " + $rootScope.traj);
+  $scope.$on('$viewContentLoaded', function(){
+    items.clear();
+    console.log("map");
+    console.log(map);
+    if (typeof $rootScope.traj != 'undefined'){
+      var marker;
+      console.log("Main is starting " + $rootScope.traj);
 
-			for	(index = 0; index < $rootScope.traj.length; index++) {
-			    var event = $rootScope.traj[index];
-				console.log(" adding to timeline and map ");
+      for	(index = 0; index < $rootScope.traj.length; index++) {
+          var event = $rootScope.traj[index];
+        console.log(" adding to timeline and map ");
 
-				var myLatlng = new google.maps.LatLng(event.lat,event.lng);
-				map.setCenter(myLatlng);
-			    marker = new google.maps.Marker({
-			          map: map,
-			          position: myLatlng,
-			          title:event.title
-			    });
-			    var idid = angular.copy(event.id);
-			    google.maps.event.addListener(marker, 'click', (function(marker, idid) {
-			        return function() {
-			        	map.setZoom(8);
-					    map.panTo(marker.getPosition());
-					    console.log("Click on " + idid);
-					    info.close();//hide the infowindow
-	    				info.setContent('<p>'+idid+'</p>');
-	    				info.open(map, marker);//"move" the info window to the clicked marker and open it
-			        }
-			      })(marker, idid));
+        var myLatlng = new google.maps.LatLng(event.lat,event.lng);
+        map.setCenter(myLatlng);
+          marker = new google.maps.Marker({
+                map: map,
+                position: myLatlng,
+                title:event.title
+          });
+          var idid = angular.copy(event.id);
+          google.maps.event.addListener(marker, 'click', (function(marker, idid) {
+              return function() {
+                map.setZoom(8);
+              map.panTo(marker.getPosition());
+              console.log("Click on " + idid);
+              info.close();//hide the infowindow
+              info.setContent('<p>'+idid+'</p>');
+              info.open(map, marker);//"move" the info window to the clicked marker and open it
+              }
+            })(marker, idid));
         $scope.markersMap[idid] = marker;
-				console.log(event);
-				items.add([{id: event.id, content: event.title, start: event.date}]);
-			}
-			timeline.fit();
-		}
-		timeline.on('select', function (properties) {
+        console.log(event);
+        items.add([{id: event.id, content: event.title, start: event.date}]);
+      }
+      timeline.fit();
+    }
+    timeline.on('select', function (properties) {
         var id = properties.items[0];
-			  console.log('selected items: ' + id);
-			  console.log( properties);
+        console.log('selected items: ' + id);
+        console.log( properties);
         timeline.focus(id);
         var marker = $scope.markersMap[id];
         // get the good marker in the maps
@@ -236,7 +234,12 @@ traj.controller('MainController', function ($scope, $modal, $window, $rootScope 
         info.close();//hide the infowindow
         info.setContent('<p>'+idid+'</p>');
         info.open(map, marker);//"move" the info window to the clicked marker and open it
-		});
+    });
+
+  });
+  $scope.markersMap = {};
+  var info = new google.maps.InfoWindow({content: ""});
+	$scope.coucou = function() {
 
 	}
 
