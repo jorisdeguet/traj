@@ -85,7 +85,7 @@ traj.controller('NavbarController', function ($scope, $window,  $translate, $roo
 	$scope.save = function(){
 		console.log($window.localStorage.traj);
 		var json = $window.localStorage.traj;
-		var dataURI = 'data:application/json;charset=utf-8,' + encodeURIComponent(json);
+		var dataURI = 'data:application/traj;charset=utf-8,' + encodeURIComponent(json);
 		console.log(json);
 		console.log(dataURI);
 		console.log("root scope :");
