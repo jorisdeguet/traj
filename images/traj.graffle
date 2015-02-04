@@ -59,12 +59,14 @@
 				<dict>
 					<key>HeadArrow</key>
 					<string>FilledArrow</string>
+					<key>HeadScale</key>
+					<real>0.5</real>
 					<key>LineType</key>
 					<integer>1</integer>
 					<key>TailArrow</key>
 					<string>0</string>
 					<key>Width</key>
-					<real>5</real>
+					<real>10</real>
 				</dict>
 			</dict>
 			<key>Tail</key>
@@ -93,12 +95,14 @@
 				<dict>
 					<key>HeadArrow</key>
 					<string>0</string>
+					<key>HeadScale</key>
+					<real>0.5</real>
 					<key>LineType</key>
 					<integer>1</integer>
 					<key>TailArrow</key>
 					<string>0</string>
 					<key>Width</key>
-					<real>5</real>
+					<real>10</real>
 				</dict>
 			</dict>
 		</dict>
@@ -122,12 +126,14 @@
 				<dict>
 					<key>HeadArrow</key>
 					<string>FilledArrow</string>
+					<key>HeadScale</key>
+					<real>0.5</real>
 					<key>LineType</key>
 					<integer>1</integer>
 					<key>TailArrow</key>
 					<string>0</string>
 					<key>Width</key>
-					<real>5</real>
+					<real>10</real>
 				</dict>
 			</dict>
 			<key>Tail</key>
@@ -152,12 +158,14 @@
 				<dict>
 					<key>HeadArrow</key>
 					<string>0</string>
+					<key>HeadScale</key>
+					<real>0.5</real>
 					<key>LineType</key>
 					<integer>1</integer>
 					<key>TailArrow</key>
 					<string>0</string>
 					<key>Width</key>
-					<real>5</real>
+					<real>10</real>
 				</dict>
 			</dict>
 		</dict>
@@ -177,12 +185,14 @@
 				<dict>
 					<key>HeadArrow</key>
 					<string>0</string>
+					<key>HeadScale</key>
+					<real>0.5</real>
 					<key>LineType</key>
 					<integer>1</integer>
 					<key>TailArrow</key>
 					<string>0</string>
 					<key>Width</key>
-					<real>5</real>
+					<real>10</real>
 				</dict>
 			</dict>
 			<key>Tail</key>
@@ -210,12 +220,14 @@
 				<dict>
 					<key>HeadArrow</key>
 					<string>FilledArrow</string>
+					<key>HeadScale</key>
+					<real>0.5</real>
 					<key>LineType</key>
 					<integer>1</integer>
 					<key>TailArrow</key>
 					<string>0</string>
 					<key>Width</key>
-					<real>5</real>
+					<real>10</real>
 				</dict>
 			</dict>
 			<key>Tail</key>
@@ -242,12 +254,14 @@
 				<dict>
 					<key>HeadArrow</key>
 					<string>0</string>
+					<key>HeadScale</key>
+					<real>0.5</real>
 					<key>LineType</key>
 					<integer>1</integer>
 					<key>TailArrow</key>
 					<string>0</string>
 					<key>Width</key>
-					<real>5</real>
+					<real>10</real>
 				</dict>
 			</dict>
 		</dict>
@@ -267,12 +281,14 @@
 				<dict>
 					<key>HeadArrow</key>
 					<string>FilledArrow</string>
+					<key>HeadScale</key>
+					<real>0.5</real>
 					<key>LineType</key>
 					<integer>1</integer>
 					<key>TailArrow</key>
 					<string>0</string>
 					<key>Width</key>
-					<real>5</real>
+					<real>10</real>
 				</dict>
 			</dict>
 		</dict>
@@ -372,7 +388,7 @@
 		</dict>
 	</array>
 	<key>ModificationDate</key>
-	<string>2015-02-03 21:22:46 +0000</string>
+	<string>2015-02-04 13:55:28 +0000</string>
 	<key>Modifier</key>
 	<string>joris deguet</string>
 	<key>NotesVisible</key>
@@ -438,7 +454,7 @@
 		<key>DrawerWidth</key>
 		<real>209</real>
 		<key>Frame</key>
-		<string>{{85, 32}, {540, 745}}</string>
+		<string>{{559, 32}, {540, 745}}</string>
 		<key>VisibleRegion</key>
 		<string>{{0, 0}, {525, 632}}</string>
 		<key>Zoom</key>

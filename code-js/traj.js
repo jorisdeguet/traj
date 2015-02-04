@@ -95,18 +95,23 @@ traj.controller('LocaleController', function ($scope, $translate) {
 
 traj.controller('NavbarController', function ($scope, $window, $location, $translate, $rootScope) {
   // recover it from storage if exists
-  console.log("In rootScope");
-  console.log($rootScope.traj);
-  console.log("In LocalStorage");
-  console.log($window.localStorage.traj);
-  if (typeof $rootScope.traj == 'undefined' && typeof $window.localStorage.traj != 'undefined'){
-    console.log("parsing");
-    $rootScope.traj = JSON.parse($window.localStorage.traj);
+  //console.log("In rootScope");
+  //console.log($rootScope.traj);
+  //console.log("In LocalStorage");
+  //console.log($window.localStorage.traj);
+  if (typeof $rootScope.traj == 'undefined' ){
+    if (typeof $window.localStorage.traj != 'undefined'){
+      console.log("parsing");
+      $rootScope.traj = JSON.parse($window.localStorage.traj);
+    }
+    else {
+      $rootScope.traj = [];
+    }
   }
-  console.log("After In rootScope");
-  console.log($rootScope.traj);
-  console.log("After In LocalStorage");
-  console.log($window.localStorage.traj);
+  //console.log("After In rootScope");
+  //console.log($rootScope.traj);
+  //console.log("After In LocalStorage");
+  //console.log($window.localStorage.traj);
 
   $scope.save = function(){
 		console.log($window.localStorage.traj);
