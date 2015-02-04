@@ -51,7 +51,7 @@ traj.config( [
     '$compileProvider',
     function( $compileProvider )
     {
-        $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|data):/);
+        $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|data):/);
     }
 ]);
 
@@ -93,7 +93,7 @@ traj.controller('LocaleController', function ($scope, $translate) {
 	};
 });
 
-traj.controller('NavbarController', function ($scope, $window, $location, $translate, $rootScope) {
+traj.controller('NavbarController', function ($scope, $window, $location, $translate, $rootScope, $route) {
   // recover it from storage if exists
   //console.log("In rootScope");
   //console.log($rootScope.traj);
@@ -129,15 +129,20 @@ traj.controller('NavbarController', function ($scope, $window, $location, $trans
 		$rootScope.traj = [];
 		console.log("Apres vidage");
 		console.log($rootScope.traj);
-    $location.path( "/" );
+    $route.reload();
 	}
 });
 
 traj.controller('ListController', function ($scope, $window,  $translate, $rootScope) {
-	console.log("In rootScope");
-	console.log($rootScope.traj);
-	console.log("In LocalStorage");
-	console.log($window.localStorage.traj);
+  if (typeof $rootScope.traj == 'undefined' ){
+    if (typeof $window.localStorage.traj != 'undefined'){
+      console.log("parsing");
+      $rootScope.traj = JSON.parse($window.localStorage.traj);
+    }
+    else {
+      $rootScope.traj = [];
+    }
+  }
 	if (typeof $rootScope.traj == 'undefined' && typeof $window.localStorage.traj != 'undefined'){
 		console.log("parsing");
 		$rootScope.traj = JSON.parse($window.localStorage.traj);
@@ -190,11 +195,9 @@ traj.controller('AddEditController', function ($scope, $modal, $window, $locatio
 				}
 			}
 		}
+    console.log($rootScope.traj);
+    $window.localStorage.traj = JSON.stringify($rootScope.traj, undefined, 2);
 		$location.path( "/list" );
-		console.log(event);
-		console.log($rootScope.traj);
-		$window.localStorage.traj = JSON.stringify($rootScope.traj, undefined, 2);
-
 	};
 
 	$scope.codeAddress = function() {
@@ -279,7 +282,7 @@ traj.controller('MainController', function ($scope, $modal, $window, $rootScope 
 });
 
 
-traj.controller('WelcomeController', function ($scope, $modal, $window, $rootScope ,$location, $http, usSpinnerService) {
+traj.controller('WelcomeController', function ($scope, $route, $modal, $window, $rootScope ,$location, $http, usSpinnerService) {
 
 	$scope.load = function(){
 		var file = document.getElementById("fileForUpload").files[0];
@@ -291,7 +294,7 @@ traj.controller('WelcomeController', function ($scope, $modal, $window, $rootSco
 		    	var events = JSON.parse(evt.target.result);
 		    	//console.log(evt.target.result);
 		    	console.log(events);
-		    	if (typeof $rootScope.traj == 'undefined'){
+		    	if ((typeof $rootScope.traj == 'undefined') || ($rootScope.traj.length == 0)){
             console.log("No traj , we take the import as is");
             $rootScope.traj = angular.copy(events);
           }
@@ -311,15 +314,20 @@ traj.controller('WelcomeController', function ($scope, $modal, $window, $rootSco
                     console.log("real conflict two different versions ");
                   }
                 }
+                else{
+                  $rootScope.traj.push(event);
+                }
               }
             }
           }
 		    	$window.localStorage.traj = JSON.stringify($rootScope.traj, undefined, 2);
-          $location.path('/list');
+
 		    }
 		    reader.onerror = function (evt) {
 		        console.log("error reading file");
 		    }
+        $location.path('/list');
+        $route.reload();
 		}
 	}
 });
