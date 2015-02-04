@@ -43,9 +43,21 @@ traj.config(['usSpinnerConfigProvider', function (usSpinnerConfigProvider) {
     usSpinnerConfigProvider.setDefaults({color: 'green'});
 }]);
 
+traj.filter('urlencode', function() {
+  return window.encodeURIComponent;
+});
+
+traj.config( [
+    '$compileProvider',
+    function( $compileProvider )
+    {
+        $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|data):/);
+    }
+]);
+
 traj.config(function ($translateProvider) {
 	$translateProvider.translations('en', {
-		TITLE: 'Traj',
+		HOME: 'Home',
 		YES : 'Yes',
 		NO : 'No',
 		CREATE : 'Create',
@@ -59,7 +71,7 @@ traj.config(function ($translateProvider) {
     FLUSH : 'Flush'
 	});
 	$translateProvider.translations('fr', {
-		TITLE: 'Traj',
+		HOME: 'Accueil',
 		YES:'Oui',
 		NO : 'Non',
 		CREATE : 'Créer',
@@ -81,8 +93,22 @@ traj.controller('LocaleController', function ($scope, $translate) {
 	};
 });
 
-traj.controller('NavbarController', function ($scope, $window,  $translate, $rootScope) {
-	$scope.save = function(){
+traj.controller('NavbarController', function ($scope, $window, $location, $translate, $rootScope) {
+  // recover it from storage if exists
+  console.log("In rootScope");
+  console.log($rootScope.traj);
+  console.log("In LocalStorage");
+  console.log($window.localStorage.traj);
+  if (typeof $rootScope.traj == 'undefined' && typeof $window.localStorage.traj != 'undefined'){
+    console.log("parsing");
+    $rootScope.traj = JSON.parse($window.localStorage.traj);
+  }
+  console.log("After In rootScope");
+  console.log($rootScope.traj);
+  console.log("After In LocalStorage");
+  console.log($window.localStorage.traj);
+
+  $scope.save = function(){
 		console.log($window.localStorage.traj);
 		var json = $window.localStorage.traj;
 		var dataURI = 'data:application/traj;charset=utf-8,' + encodeURIComponent(json);
@@ -98,6 +124,7 @@ traj.controller('NavbarController', function ($scope, $window,  $translate, $roo
 		delete $rootScope.traj;
 		console.log("Apres vidage");
 		console.log($rootScope.traj);
+    $location.path( "/" );
 	}
 });
 
@@ -255,13 +282,35 @@ traj.controller('WelcomeController', function ($scope, $modal, $window, $rootSco
 		    var reader = new FileReader();
 		    reader.readAsText(file, "UTF-8");
 		    reader.onload = function (evt) {
-		    	console.log(evt.target.result);
 		    	// parse it as json
 		    	var events = JSON.parse(evt.target.result);
-		    	console.log(evt.target.result);
+		    	//console.log(evt.target.result);
 		    	console.log(events);
-		    	$rootScope.traj = angular.copy(events);
+		    	if (typeof $rootScope.traj == 'undefined'){
+            console.log("No traj , we take the import as is");
+            $rootScope.traj = angular.copy(events);
+          }
+          else{
+            console.log("Existing traj , check conflicts ...");
+            for (var i = 0 ; i < events.length ; i++ ){
+              // see if there is a conflict with existing event
+              var event = events[i];
+              for(var j = 0 ; j < $rootScope.traj.length; j++){
+                if ($rootScope.traj[j].id === event.id){
+                  //console.log("conflict " )
+                  // conflict check if the rest is the same
+                  if (JSON.stringify($rootScope.traj[j]) === JSON.stringify(event)){
+                    console.log("the same after all");
+                  }
+                  else{
+                    console.log("real conflict two different versions ");
+                  }
+                }
+              }
+            }
+          }
 		    	$window.localStorage.traj = JSON.stringify($rootScope.traj, undefined, 2);
+          $location.path('/list');
 		    }
 		    reader.onerror = function (evt) {
 		        console.log("error reading file");

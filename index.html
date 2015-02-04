@@ -19,34 +19,49 @@
 
 </head>
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top">
-	  <div class="container">
-	    <ul class="nav navbar-nav navbar-left" ng-controller="NavbarController">
-			<li><a href="#welcome">{{ 'TITLE' | translate }}</a></li>
-			<li><a href="#add">{{ 'ADD' | translate }}</a></li>
-			<li><a href="#main">{{ 'MAP' | translate }}</a></li>
-			<li><a href="#list">{{ 'LIST' | translate }}</a></li>
-			<li><a href ng-click="save();">{{ 'SAVE' | translate }}</a></li>
-			<li><a href ng-click="empty();">{{ 'FLUSH' | translate }}</a></li>
+	<nav class="navbar navbar-default navbar-fixed-top" ng-controller="NavbarController">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#"><img src="images/traj.png" style="height:20px;" /></a>
+				</div>
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-left" ng-controller="NavbarController">
+					<li><a href="#welcome">{{ 'HOME' | translate }}</a></li>
+					<li><a href="#add">{{ 'ADD' | translate }}</a></li>
+					<li><a href="#main">{{ 'MAP' | translate }}</a></li>
+					<li><a href="#list">{{ 'LIST' | translate }}</a></li>
+					<li><a href ng-click="save();">{{ 'SAVE' | translate }}</a></li>
+					<li><a target="_blank" download="traj.json" href="data:application/json;charset=utf-8,{{traj|json|urlencode}}" >{{ 'SAVE' | translate }} Bis</a></li>
+					<li><a href ng-click="empty();">{{ 'FLUSH' | translate }}</a></li>
 
-		</ul>
-		<ul class="nav navbar-nav navbar-right" ng-controller="LocaleController">
-			<li><a href ng-click="changeLanguage('en')">en</a></li>
-			<li><a href ng-click="changeLanguage('fr')">fr</a></li>
-			<!--		<li class="dropdown">
-				<a  class="dropdown-toggle" data-toggle="dropdown">
-					{{ 'LANGUAGE' | translate }}<span class="caret"></span>
-				</a>
-				<ul class="dropdown-menu" role="menu">
-					<li><a ng-click="changeLanguage('en')">English</a></li>
-					<li><a ng-click="changeLanguage('fr')">Français</a></li>
-				  <li><a ng-click="changeLanguage('de')">Deutsch</a></li>
-					<li><a ng-click="changeLanguage('es')">Español</a></li>
 				</ul>
-			</li> -->
-		</ul>
-	  </div>
-	</nav>
+				<ul class="nav navbar-nav navbar-right" ng-controller="LocaleController">
+					<li><a href ng-click="changeLanguage('en')">en</a></li>
+					<li><a href ng-click="changeLanguage('fr')">fr</a></li>
+					<!--		<li class="dropdown">
+						<a  class="dropdown-toggle" data-toggle="dropdown">
+							{{ 'LANGUAGE' | translate }}<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a ng-click="changeLanguage('en')">English</a></li>
+							<li><a ng-click="changeLanguage('fr')">Français</a></li>
+							<li><a ng-click="changeLanguage('de')">Deutsch</a></li>
+							<li><a ng-click="changeLanguage('es')">Español</a></li>
+						</ul>
+					</li> -->
+				</ul>
+				</div><!--/.nav-collapse -->
+			</div>
+		</nav>
+
+
+
 	<div class="container">
 		<div class="ng-view"></div>
 
