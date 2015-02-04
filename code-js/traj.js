@@ -126,7 +126,7 @@ traj.controller('NavbarController', function ($scope, $window, $location, $trans
 
 	$scope.empty = function(){
 		delete $window.localStorage.traj;
-		delete $rootScope.traj;
+		$rootScope.traj = [];
 		console.log("Apres vidage");
 		console.log($rootScope.traj);
     $location.path( "/" );
