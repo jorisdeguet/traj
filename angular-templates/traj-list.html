@@ -24,7 +24,7 @@
 					<td>{{ event.lat | number:1}}</td>
 					<td>{{ event.lng | number:1}}</td>
 					<td><a href="#edit/{{ event.id }}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>  </a></td>
-					<td><a href="#share/{{ event | json}}" target="_blank"><span class="glyphicon glyphicon-share" aria-hidden="true"></span> </a></td>
+					<td><a href="#share/{{ event.id}}"><span class="glyphicon glyphicon-share" aria-hidden="true"></span> </a></td>
 					<td><a ng-click="remove(event.id)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> </a></td>
 				</tr>
 <!-- TODO

@@ -5,11 +5,6 @@
 	<meta charset="utf-8">
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-<!-- 	<script src="/simile/timeline_ajax/simile-ajax-api.js?bundle=true" -->
-<!-- 	type="text/javascript"></script> -->
-<!--     <script src="/simile/timeline_js/timeline-api.js?bundle=true" -->
-<!-- 	type="text/javascript"></script> -->
-
 	<style>
 		body {
 			padding-top: 70px;
@@ -37,9 +32,10 @@
 					<li><a href="#main">{{ 'MAP' | translate }}</a></li>
 					<li><a href="#list">{{ 'LIST' | translate }}</a></li>
 					<!-- <li><a href ng-click="save();">{{ 'SAVE' | translate }}</a></li> -->
-					<li><a target="_blank" download="traj.json" href="data:application/json;charset=utf-8,{{traj|json|urlencode}}" >{{ 'SAVE' | translate }}</a></li>
+					<li><a target="_blank" download="traj.json" href="data:application/json;charset=utf-8,{{allAsJson()}}" >{{ 'SAVE' | translate }}</a></li>
 					<li><a href ng-click="empty();">{{ 'FLUSH' | translate }}</a></li>
-					<li><a><span class="label label-primary">{{ traj.length }} {{ 'EVENTS' | translate }}</span></a></li>
+					<li><a href ng-click="shareAll();">{{ 'SHARE' | translate }}</a></li>
+					<li><a><span class="label label-primary">{{ numberOfEvents() }} {{ 'EVENTS' | translate }}</span></a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right" ng-controller="LocaleController">
 					<li><a href ng-click="changeLanguage('en')">en</a></li>
@@ -83,8 +79,11 @@
 	<script src="libs/angular-spinner.js"></script>
 	<script src="libs/ui-bootstrap-tpls-0.12.0.js"></script>
 	<script src="libs/angular-locale_fr-fr.js"></script>
+	<script src="libs/lz-string.js"></script>
 
 	<!-- application code -->
+	<script src="code-js/traj-service-events.js"></script>
+	<script src="code-js/traj-i18n.js"></script>
 	<script src="code-js/traj.js"></script>
 
 

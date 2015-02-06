@@ -7,7 +7,7 @@
 
 var eventSource;
 
-var traj = angular.module('traj', ['ngRoute','ui.bootstrap','pascalprecht.translate','angularSpinner']);
+var traj = angular.module('traj', ['traj.i18n','eventService','ngRoute','ui.bootstrap','angularSpinner']);
 
 //Define Routing for app
 //Uri /AddNewOrder -> template add_order.html and Controller AddOrderController
@@ -26,10 +26,18 @@ traj.config(['$routeProvider',
 		templateUrl: 'angular-templates/traj-welcome.html',
 		controller: 'WelcomeController'
 	}).
+  when('/import/:data', {
+    templateUrl: 'angular-templates/traj-import.html',
+    controller: 'ImportController'
+  }).
 	when('/main', {
 		templateUrl: 'angular-templates/traj-main.html',
 		controller: 'MainController'
 	}).
+  when('/share/:id', {
+    templateUrl: 'angular-templates/traj-share.html',
+    controller: 'ShareController'
+  }).
 	when('/list', {
 		templateUrl: 'angular-templates/traj-list.html',
 		controller: 'ListController'
@@ -37,10 +45,6 @@ traj.config(['$routeProvider',
 	otherwise({
 		redirectTo: '/welcome'
 	});
-}]);
-
-traj.config(['usSpinnerConfigProvider', function (usSpinnerConfigProvider) {
-    usSpinnerConfigProvider.setDefaults({color: 'green'});
 }]);
 
 traj.filter('urlencode', function() {
@@ -55,149 +59,61 @@ traj.config( [
     }
 ]);
 
-traj.config(function ($translateProvider) {
-	$translateProvider.translations('en', {
-		HOME: 'Home',
-		YES : 'Yes',
-		NO : 'No',
-		CREATE : 'Create',
-		LANGUAGE : 'Language',
-		RESULTS : 'Results',
-		SEARCH : 'Search',
-		LIST : 'List',
-		MAP : 'Map',
-		ADD : 'Add',
-    SAVE : 'Save',
-    FLUSH : 'Flush'
-	});
-	$translateProvider.translations('fr', {
-		HOME: 'Accueil',
-		YES:'Oui',
-		NO : 'Non',
-		CREATE : 'Créer',
-		LANGUAGE : 'Langue',
-		RESULTS : 'Résultats',
-		SEARCH : 'Rechercher',
-		LIST : 'Liste',
-		MAP : 'Carte',
-		ADD : 'Ajouter',
-    SAVE : 'Sauver',
-    FLUSH : 'Vider'
-	});
-	$translateProvider.preferredLanguage('fr');
-});
-
 traj.controller('LocaleController', function ($scope, $translate) {
 	$scope.changeLanguage = function (key) {
 		$translate.use(key);
 	};
 });
 
-traj.controller('NavbarController', function ($scope, $window, $location, $translate, $rootScope, $route) {
-  // recover it from storage if exists
-  //console.log("In rootScope");
-  //console.log($rootScope.traj);
-  //console.log("In LocalStorage");
-  //console.log($window.localStorage.traj);
-  if (typeof $rootScope.traj == 'undefined' ){
-    if (typeof $window.localStorage.traj != 'undefined'){
-      console.log("parsing");
-      $rootScope.traj = JSON.parse($window.localStorage.traj);
-    }
-    else {
-      $rootScope.traj = [];
-    }
+traj.controller('NavbarController', function ($scope, $location, eventService, $route) {
+  $scope.numberOfEvents = function(){
+    return eventService.traj.length;
   }
-  //console.log("After In rootScope");
-  //console.log($rootScope.traj);
-  //console.log("After In LocalStorage");
-  //console.log($window.localStorage.traj);
 
-  $scope.save = function(){
-		console.log($window.localStorage.traj);
-		var json = $window.localStorage.traj;
+  $scope.allAsJson = function(){
+		var json = eventService.allAsJson();
+    //console.log(json);
 		var dataURI = 'data:application/traj;charset=utf-8,' + encodeURIComponent(json);
-		console.log(json);
-		console.log(dataURI);
-		console.log("root scope :");
-		console.log($rootScope.traj);
-		window.open(dataURI,'_blank');
+		//console.log(dataURI);
+    return dataURI;
+		//window.open(dataURI,"_blank");
 	}
 
+  $scope.shareAll = function(){
+    var compressed = LZString.compressToEncodedURIComponent(eventService.allAsJson());
+    console.log("Size of compressed sample is: " + compressed.length);
+    console.log(compressed);
+    var recov = LZString.decompressFromEncodedURIComponent(compressed);
+    console.log("Sample is: " + (recov === eventService.allAsJson()));
+    var dataURI = '#import/' + compressed;
+    window.open(dataURI,'_blank');
+  }
+
 	$scope.empty = function(){
-		delete $window.localStorage.traj;
-		$rootScope.traj = [];
-		console.log("Apres vidage");
-		console.log($rootScope.traj);
+    eventService.empty();
     $route.reload();
 	}
 });
 
-traj.controller('ListController', function ($scope, $window,  $translate, $rootScope) {
-  if (typeof $rootScope.traj == 'undefined' ){
-    if (typeof $window.localStorage.traj != 'undefined'){
-      console.log("parsing");
-      $rootScope.traj = JSON.parse($window.localStorage.traj);
-    }
-    else {
-      $rootScope.traj = [];
-    }
-  }
-	if (typeof $rootScope.traj == 'undefined' && typeof $window.localStorage.traj != 'undefined'){
-		console.log("parsing");
-		$rootScope.traj = JSON.parse($window.localStorage.traj);
-	}
-	console.log("After In rootScope");
-	console.log($rootScope.traj);
-	console.log("After In LocalStorage");
-	console.log($window.localStorage.traj);
-	$scope.list = $rootScope.traj;
+traj.controller('ListController', function ($scope, eventService) {
+	$scope.list = eventService.traj;
 
 	$scope.remove = function(id){
-		console.log("remove " + id );
-		var index = 0;
-		for (var i = 0 ; i < $rootScope.traj.length ; i++){
-			var elt = $rootScope.traj[i];
-			if (elt.id === id) index = i;
-		}
-		$rootScope.traj.splice(index, 1);
-		console.log($rootScope.traj);
+    eventService.remove(id);
 	}
 });
 
 
-traj.controller('AddEditController', function ($scope, $modal, $window, $location, $routeParams, $http,$rootScope, usSpinnerService) {
-	if (typeof $routeParams.id != 'undefined' && typeof $rootScope.traj != 'undefined'){
-		for (var i = 0 ; i < $rootScope.traj.length ; i++){
-			var evt = $rootScope.traj[i];
-			if (evt.id === $routeParams.id){
-				console.log("Found it");
-				$scope.event = angular.copy(evt);
-			}
-		}
+traj.controller('AddEditController', function ($scope,  $location, $routeParams, eventService) {
+	if (typeof $routeParams.id != 'undefined' ){
+    $scope.event = eventService.get($routeParams.id);
+
 	}
 	console.log("id " + $routeParams.id);
-	if ( typeof $rootScope.traj == 'undefined' ) $rootScope.traj = [];
 	$scope.add = function(event) {
-		if (typeof event.id == 'undefined'){
-			event.id  = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-			    var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
-			    return v.toString(16);
-			});
-			$rootScope.traj.push(event);
-		}
-		else{
-			for (var i = 0 ; i < $rootScope.traj.length ; i++){
-				var evt = $rootScope.traj[i];
-				if (evt.id === $routeParams.id){
-					console.log("Found it and going to replace");
-					$rootScope.traj[i] = event;
-				}
-			}
-		}
-    console.log($rootScope.traj);
-    $window.localStorage.traj = JSON.stringify($rootScope.traj, undefined, 2);
-		$location.path( "/list" );
+    eventService.add(event);
+
+    $location.path( "/list" );
 	};
 
 	$scope.codeAddress = function() {
@@ -221,43 +137,86 @@ traj.controller('AddEditController', function ($scope, $modal, $window, $locatio
 	}
 });
 
-traj.controller('MainController', function ($scope, $modal, $window, $rootScope ,$location, $http, usSpinnerService) {
+traj.controller('ImportController', function ($scope,eventService, $location, $routeParams) {
+  var data = $routeParams.data;
+  console.log("data " + data);
+  var json = LZString.decompressFromEncodedURIComponent(data);
+  $scope.events = JSON.parse(json);
+
+  $scope.import = function(event){
+    console.log("adding " + event);
+    eventService.add(event);
+    var index = 0;
+    for (var i = 0 ; i < $scope.events.length ; i++){
+      var elt = $scope.events[i];
+      if (elt.id === event.id) index = i;
+    }
+    $scope.events.splice(index, 1);
+    // nothing more to import go to the list
+    if ($scope.events.length == 0 ) {$location.path('/list');}
+  }
+  //console.log(events);
+});
+
+traj.controller('ShareController', function ($scope, eventService, $routeParams) {
+  var id = $routeParams.id;
+  $scope.event = eventService.get(id);
+  $scope.json = JSON.stringify([$scope.event]);
+  $scope.link = LZString.compressToEncodedURIComponent($scope.json);
+
+});
+
+traj.controller('MainController', function ($scope, eventService, $location) {
+  $scope.markersMap = {};
+  var info = new google.maps.InfoWindow({content: ""});
   $scope.$on('$viewContentLoaded', function(){
     items.clear();
     console.log("map");
     console.log(map);
-    if (typeof $rootScope.traj != 'undefined'){
-      var marker;
-      console.log("Main is starting " + $rootScope.traj);
 
-      for	(index = 0; index < $rootScope.traj.length; index++) {
-          var event = $rootScope.traj[index];
-        console.log(" adding to timeline and map ");
+    var marker;
+    console.log("Main is starting " + eventService.traj);
+    var path = [];
+    var bounds = new google.maps.LatLngBounds();
+    for	(index = 0; index < eventService.traj.length; index++) {
+      var event = eventService.traj[index];
+      console.log(" adding to timeline and map ");
 
-        var myLatlng = new google.maps.LatLng(event.lat,event.lng);
-        map.setCenter(myLatlng);
-          marker = new google.maps.Marker({
-                map: map,
-                position: myLatlng,
-                title:event.title
-          });
-          var idid = angular.copy(event.id);
-          google.maps.event.addListener(marker, 'click', (function(marker, idid) {
-              return function() {
-                map.setZoom(8);
-              map.panTo(marker.getPosition());
-              console.log("Click on " + idid);
-              info.close();//hide the infowindow
-              info.setContent('<p>'+idid+'</p>');
-              info.open(map, marker);//"move" the info window to the clicked marker and open it
-              }
-            })(marker, idid));
-        $scope.markersMap[idid] = marker;
-        console.log(event);
-        items.add([{id: event.id, content: event.title, start: event.date}]);
-      }
-      timeline.fit();
+      var myLatlng = new google.maps.LatLng(event.lat,event.lng);
+      path.push(myLatlng);
+      map.setCenter(myLatlng);
+        marker = new google.maps.Marker({
+              map: map,
+              position: myLatlng,
+              title:event.title
+        });
+        var idid = angular.copy(event.id);
+        google.maps.event.addListener(marker, 'click', (function(marker, idid) {
+            return function() {
+              map.setZoom(8);
+            map.panTo(marker.getPosition());
+            console.log("Click on " + idid);
+            info.close();//hide the infowindow
+            info.setContent('<p>'+idid+'</p>');
+            info.open(map, marker);//"move" the info window to the clicked marker and open it
+            }
+          })(marker, idid));
+      $scope.markersMap[idid] = marker;
+      bounds.extend(myLatlng);
+      console.log(event);
+      items.add([{id: event.id, content: event.title, start: event.date}]);
     }
+    var flightPath = new google.maps.Polyline({
+      path: path,
+      geodesic: true,
+      strokeColor: '#444444',
+      strokeOpacity: 0.5,
+      strokeWeight: 3
+    });
+
+    flightPath.setMap(map);
+    map.fitBounds(bounds);
+    timeline.fit();
     timeline.on('select', function (properties) {
         var id = properties.items[0];
         console.log('selected items: ' + id);
@@ -272,17 +231,22 @@ traj.controller('MainController', function ($scope, $modal, $window, $rootScope 
     });
 
   });
-  $scope.markersMap = {};
-  var info = new google.maps.InfoWindow({content: ""});
-	$scope.coucou = function() {
-
-	}
-
 
 });
 
 
-traj.controller('WelcomeController', function ($scope, $route, $modal, $window, $rootScope ,$location, $http, usSpinnerService) {
+traj.controller('WelcomeController', function ($scope, $http, eventService, $route, $location) {
+  $scope.loadFromURL = function(){
+    var url = document.getElementById("urlToLoad").value;
+    console.log("From URL "  +url);
+    $http.get(url).
+    success(function(data, status, headers, config) {
+      console.log("Success for results " + data.length  );
+    }).
+    error(function(data, status, headers, config) {
+      console.log("Error " + data );
+    });
+  }
 
 	$scope.load = function(){
 		var file = document.getElementById("fileForUpload").files[0];
@@ -294,34 +258,12 @@ traj.controller('WelcomeController', function ($scope, $route, $modal, $window, 
 		    	var events = JSON.parse(evt.target.result);
 		    	//console.log(evt.target.result);
 		    	console.log(events);
-		    	if ((typeof $rootScope.traj == 'undefined') || ($rootScope.traj.length == 0)){
-            console.log("No traj , we take the import as is");
-            $rootScope.traj = angular.copy(events);
+          for (var i = 0 ; i < events.length ; i++ ){
+            var event = events[i];
+            eventService.add(event);
           }
-          else{
-            console.log("Existing traj , check conflicts ...");
-            for (var i = 0 ; i < events.length ; i++ ){
-              // see if there is a conflict with existing event
-              var event = events[i];
-              for(var j = 0 ; j < $rootScope.traj.length; j++){
-                if ($rootScope.traj[j].id === event.id){
-                  //console.log("conflict " )
-                  // conflict check if the rest is the same
-                  if (JSON.stringify($rootScope.traj[j]) === JSON.stringify(event)){
-                    console.log("the same after all");
-                  }
-                  else{
-                    console.log("real conflict two different versions ");
-                  }
-                }
-                else{
-                  $rootScope.traj.push(event);
-                }
-              }
-            }
-          }
-		    	$window.localStorage.traj = JSON.stringify($rootScope.traj, undefined, 2);
-
+          $location.path('/list');
+          $route.reload();
 		    }
 		    reader.onerror = function (evt) {
 		        console.log("error reading file");
