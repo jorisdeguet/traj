@@ -137,15 +137,24 @@ traj.controller('AddEditController', function ($scope,  $location, $routeParams,
 	}
 });
 
-traj.controller('ImportController', function ($scope,eventService, $location, $routeParams) {
+traj.controller('ImportController', function ($scope,filterFilter, eventService, $location, $routeParams) {
   var data = $routeParams.data;
   console.log("data " + data);
   var json = LZString.decompressFromEncodedURIComponent(data);
   $scope.events = JSON.parse(json);
 
-  $scope.import = function(event){
-    console.log("adding " + event);
-    eventService.add(event);
+  $scope.importAll = function(list){
+    var toImport = filterFilter(list, $scope.query);
+    console.log(toImport);
+    for (var i = 0 ; i < toImport.length ; i++){
+      var elt = toImport[i];
+      eventService.add(elt);
+      $location.path('/list');
+    }
+  }
+
+  $scope.remove = function(event){
+    console.log("removing " + event);
     var index = 0;
     for (var i = 0 ; i < $scope.events.length ; i++){
       var elt = $scope.events[i];
@@ -154,6 +163,11 @@ traj.controller('ImportController', function ($scope,eventService, $location, $r
     $scope.events.splice(index, 1);
     // nothing more to import go to the list
     if ($scope.events.length == 0 ) {$location.path('/list');}
+  }
+
+  $scope.import = function(event){
+    console.log("adding " + event);
+    $scope.remove(event);
   }
   //console.log(events);
 });
@@ -168,42 +182,46 @@ traj.controller('ShareController', function ($scope, eventService, $routeParams)
 
 traj.controller('MainController', function ($scope, eventService, $location) {
   $scope.markersMap = {};
+  $scope.selectedEvent = {};
   var info = new google.maps.InfoWindow({content: ""});
+
+  $scope.select = function(evt){
+    // in the timeline
+    timeline.focus(evt.id);
+    timeline.setSelection(evt.id);
+    // on the map
+    var mark = $scope.markersMap[evt.id];
+    //map.setZoom(8);
+    map.panTo(mark.getPosition());
+    info.close();//hide the infowindow
+    info.setContent('<p>'+evt.title+'</p>');
+    $scope.$apply(function(){
+      $scope.selectedEvent = evt;
+    });
+    $('#title').html($scope.selectedEvent.title);
+    info.open(map, mark);
+  }
+
   $scope.$on('$viewContentLoaded', function(){
     items.clear();
-    console.log("map");
-    console.log(map);
-
     var marker;
     console.log("Main is starting " + eventService.traj);
     var path = [];
     var bounds = new google.maps.LatLngBounds();
     for	(index = 0; index < eventService.traj.length; index++) {
       var event = eventService.traj[index];
-      console.log(" adding to timeline and map ");
-
       var myLatlng = new google.maps.LatLng(event.lat,event.lng);
       path.push(myLatlng);
-      map.setCenter(myLatlng);
-        marker = new google.maps.Marker({
-              map: map,
-              position: myLatlng,
-              title:event.title
-        });
-        var idid = angular.copy(event.id);
-        google.maps.event.addListener(marker, 'click', (function(marker, idid) {
-            return function() {
-              map.setZoom(8);
-            map.panTo(marker.getPosition());
-            console.log("Click on " + idid);
-            info.close();//hide the infowindow
-            info.setContent('<p>'+idid+'</p>');
-            info.open(map, marker);//"move" the info window to the clicked marker and open it
-            }
-          })(marker, idid));
+      marker = new google.maps.Marker({
+            map: map,
+            position: myLatlng
+      });
+      var idid = angular.copy(event.id);
+      google.maps.event.addListener(marker, 'click', (function(marker, idid, event) {
+          return function() { $scope.select(event);  }
+        })(marker, idid, event));
       $scope.markersMap[idid] = marker;
       bounds.extend(myLatlng);
-      console.log(event);
       items.add([{id: event.id, content: event.title, start: event.date}]);
     }
     var flightPath = new google.maps.Polyline({
@@ -220,18 +238,10 @@ traj.controller('MainController', function ($scope, eventService, $location) {
     timeline.on('select', function (properties) {
         var id = properties.items[0];
         console.log('selected items: ' + id);
-        console.log( properties);
-        timeline.focus(id);
-        var marker = $scope.markersMap[id];
-        // get the good marker in the maps
-        map.panTo(marker.getPosition());
-        info.close();//hide the infowindow
-        info.setContent('<p>'+idid+'</p>');
-        info.open(map, marker);//"move" the info window to the clicked marker and open it
+        $scope.select(eventService.get(id));
+
     });
-
   });
-
 });
 
 

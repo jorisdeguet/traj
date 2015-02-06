@@ -2,8 +2,13 @@
 
 	<div class="col-md-12">
 		<div class="well">
-			<h1>IMPORTS <span class="label label-primary">{{ events.length }}</span></h1>
-			<input type="text" ng-model="query">
+			<h1>{{'IMPORTS'| translate}} <span class="label label-primary">{{ events.length }}</span></h1>
+			<p>
+				<a href class="btn btn-success" ng-click="importAll(events)">Importer tout</a>
+			</p>
+			<p>
+				Filtrer : <input type="text" ng-model="query">
+			</p>
 			<table class="table table-striped table-condensed table-hover" >
 				<tr >
 					<th>Title</th>
@@ -13,6 +18,7 @@
 					<th>Latitude</th>
 					<th>Longitude</th>
 					<th>Import</th>
+					<th>Discard</th>
 				</tr>
 				<tr ng-repeat="event in events  | filter:query | orderBy: 'date':true  track by event.id">
 					<td>{{ event.title }}</td>
@@ -22,6 +28,7 @@
 					<td>{{ event.lat | number:1}}</td>
 					<td>{{ event.lng | number:1}}</td>
 					<td><a href ng-click="import(event)"><span class="glyphicon glyphicon-import" aria-hidden="true"></span> </a></td>
+					<td><a href ng-click="remove(event)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> </a></td>
 				</tr>
 
 		</table>

@@ -17,6 +17,8 @@ traj_i18n.config(function ($translateProvider) {
     URL_TO_LOAD : 'Enter URL here',
     IMPORT_FROM_FILE : 'Import from a file on your computer',
     LOAD_A_FILE : 'Load the file',
+    EVENTS : 'Events',
+    IMPORTS : 'Events to import',
     FLUSH : 'Flush'
   });
   $translateProvider.translations('fr', {
@@ -35,6 +37,8 @@ traj_i18n.config(function ($translateProvider) {
     URL_TO_LOAD : "Entrer l'URL ici",
     IMPORT_FROM_FILE : 'Importez depuis un fichier sur votre ordinateur',
     LOAD_A_FILE : 'Chargez le fichier',
+    EVENTS : 'Événements',
+    IMPORTS : 'Événements à importer',
     FLUSH : 'Vider'
   });
   $translateProvider.preferredLanguage('fr');

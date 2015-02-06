@@ -1,10 +1,22 @@
-<div class="row" ng-controller="MainController">
+<div class="row" >
 <script src="libs/vis/dist/vis.js"></script>
 <link href="libs/vis/dist/vis.css" rel="stylesheet">
 
 <!-- 	http://visjs.org/docs/timeline.html -->
 	<div class="col-md-8">
 		<div map-canvas id="map-canvas" style="height:350px;width:100%"></div>
+	</div>
+	<div class="col-md-4">
+		<p>
+			<span class="label label-primary">{{selectedEvent.title}} </span>
+		</p>
+		<p>
+			{{selectedEvent.description}}
+		</p>
+		<p>
+			<a href="#edit/{{selectedEvent.id}}" class="btn btn-warning">Modifier</a>
+		</p>
+
 	</div>
 	<div class="col-md-12">
 		<div id="visualization"></div>
