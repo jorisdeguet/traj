@@ -16,7 +16,7 @@
 	<div class="col-md-4 well">
 		<form class="form-signin" role="form" novalidate>
 			<h2 class="form-signin-heading">Où</h2>
-			<input id="address" type="textbox" ng-model="event.place" placeholder="Ville, Pays">
+			<input id="address" type="textbox" ng-model="event.place" ng-change="change()" placeholder="Ville, Pays">
       		<input class="btn btn-primary btn-mini" type="button" value="Geocode" ng-click="codeAddress()">
 
 			<div  map-canvas2  id="map-canvas" style="height:250px;width:100%;"></div>

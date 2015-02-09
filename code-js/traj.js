@@ -38,6 +38,10 @@ traj.config(['$routeProvider',
     templateUrl: 'angular-templates/traj-share.html',
     controller: 'ShareController'
   }).
+  when('/shareAll', {
+    templateUrl: 'angular-templates/traj-share.html',
+    controller: 'ShareController'
+  }).
 	when('/list', {
 		templateUrl: 'angular-templates/traj-list.html',
 		controller: 'ListController'
@@ -70,10 +74,10 @@ traj.controller('NavbarController', function ($scope, $location, eventService, $
     return eventService.traj.length;
   }
 
-  $scope.allAsJson = function(){
+  $scope.allAsDataURL = function(){
 		var json = eventService.allAsJson();
     //console.log(json);
-		var dataURI = 'data:application/traj;charset=utf-8,' + encodeURIComponent(json);
+		var dataURI = 'data:application/json;charset=utf-8,' + encodeURIComponent(json);
 		//console.log(dataURI);
     return dataURI;
 		//window.open(dataURI,"_blank");
@@ -116,13 +120,18 @@ traj.controller('AddEditController', function ($scope,  $location, $routeParams,
     $location.path( "/list" );
 	};
 
+  $scope.change = function() {
+    var address = document.getElementById('address').value;
+    console.log("adress " + address);
+  }
+  var marker;
 	$scope.codeAddress = function() {
 		  var address = document.getElementById('address').value;
 		  geocoder = new google.maps.Geocoder();
 		  geocoder.geocode( { 'address': address}, function(results, status) {
 		    if (status == google.maps.GeocoderStatus.OK) {
 		      map.setCenter(results[0].geometry.location);
-		      var marker = new google.maps.Marker({
+		      marker = new google.maps.Marker({
 		          map: map,
 		          position: results[0].geometry.location
 		      });
@@ -174,10 +183,19 @@ traj.controller('ImportController', function ($scope,filterFilter, eventService,
 
 traj.controller('ShareController', function ($scope, eventService, $routeParams) {
   var id = $routeParams.id;
-  $scope.event = eventService.get(id);
-  $scope.json = JSON.stringify([$scope.event]);
-  $scope.link = LZString.compressToEncodedURIComponent($scope.json);
-
+  if (typeof $routeParams.id == 'undefined'){
+    console.log("Share all");
+    $scope.json = eventService.allAsJson();
+    //console.log(json);
+    $scope.link = LZString.compressToEncodedURIComponent($scope.json);
+    //var dataURI = 'data:application/json;charset=utf-8,' + encodeURIComponent(json);
+  }
+  else{
+    console.log("Share one " + id);
+    var event = eventService.get(id);
+    $scope.json = JSON.stringify([event]);
+    $scope.link = LZString.compressToEncodedURIComponent($scope.json);
+  }
 });
 
 traj.controller('MainController', function ($scope, eventService, $location) {
