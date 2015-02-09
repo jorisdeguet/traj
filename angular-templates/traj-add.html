@@ -33,15 +33,20 @@
 
 			</select>
 			<div>
-        		<datepicker ng-model="event.date"  show-weeks="true" class="well well-sm"></datepicker>
-    		</div>
+        	<datepicker ng-model="event.date"  show-weeks="true" class="well well-sm"></datepicker>
+    	</div>
+
+			<div ng-show="event.type === 'Period'">
+					<h3>Jusque</h3>
+					<datepicker ng-model="event.end"   show-weeks="true" class="well well-sm"></datepicker>
+			</div>
 
 		</form>
 	</div>
 	<div class="col-md-12 ">
 		<button ng-click="add(event)"
 				class="btn btn-lg btn-primary btn-block">{{ 'SAVE' | translate}}</button>
-		<!-- <pre>TOCREATE = {{event | json}}</pre> -->
+		<!--<pre>TOCREATE = {{event | json}}</pre> -->
 	</div>
 
 

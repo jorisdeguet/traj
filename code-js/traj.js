@@ -111,12 +111,15 @@ traj.controller('ListController', function ($scope, eventService) {
 traj.controller('AddEditController', function ($scope,  $location, $routeParams, eventService) {
 	if (typeof $routeParams.id != 'undefined' ){
     $scope.event = eventService.get($routeParams.id);
-
 	}
+  else{
+    $scope.event = {};
+    $scope.event.type = 'Ponctual';
+  }
 	console.log("id " + $routeParams.id);
 	$scope.add = function(event) {
+    // TODO validation
     eventService.add(event);
-
     $location.path( "/list" );
 	};
 
@@ -240,7 +243,13 @@ traj.controller('MainController', function ($scope, eventService, $location) {
         })(marker, idid, event));
       $scope.markersMap[idid] = marker;
       bounds.extend(myLatlng);
-      items.add([{id: event.id, content: event.title, start: event.date}]);
+      if (typeof event.end == 'undefined'){
+        items.add([{id: event.id, content: event.title, start: event.date}]);
+      }
+      else{
+        items.add([{id: event.id, content: event.title, start: event.date, end: event.end, type:'range'}]);
+      }
+
     }
     var flightPath = new google.maps.Polyline({
       path: path,

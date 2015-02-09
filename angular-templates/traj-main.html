@@ -1,7 +1,11 @@
 <div class="row" >
 <script src="libs/vis/dist/vis.js"></script>
 <link href="libs/vis/dist/vis.css" rel="stylesheet">
-
+<style>
+.vis.timeline .item.range .content {
+	overflow: visible;
+}
+</style>
 <!-- 	http://visjs.org/docs/timeline.html -->
 	<div class="col-md-8">
 		<div map-canvas id="map-canvas" style="height:350px;width:100%"></div>
@@ -31,14 +35,15 @@
   var items = new vis.DataSet([ ]);
 
   // Configuration for the Timeline
-  	var options = {
+	var options = {
+		type:'point',
 	  locales: {
 	    // create a new locale (text strings should be replaced with localized strings)
 	    fr: {
 	      current: 'actuel',
 	      time: 'temps',
 	    }
-	  },
+  	},
 
 	  // use the new locale
 	  locale: 'fr'
