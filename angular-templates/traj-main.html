@@ -11,14 +11,21 @@
 		<div map-canvas id="map-canvas" style="height:350px;width:100%"></div>
 	</div>
 	<div class="col-md-4">
+		<h3>{{'TITLE' | translate}}</h3>
 		<p>
 			<span class="label label-primary">{{selectedEvent.title}} </span>
 		</p>
+		<h3>{{'DESCRIPTION' | translate}}</h3>
 		<p>
-			{{selectedEvent.description}}
+			{{selectedEvent.description}} 
+		</p>
+		<h3>{{'PLACE' | translate}}</h3>
+		<p>
+			<span class="label label-primary">{{selectedEvent.place}} </span>
 		</p>
 		<p>
 			<a href="#edit/{{selectedEvent.id}}" class="btn btn-warning">Modifier</a>
+			<a href="#share/{{selectedEvent.id}}" class="btn btn-warning">{{'SHARE' | translate}}</a>
 		</p>
 
 	</div>

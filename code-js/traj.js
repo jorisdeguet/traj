@@ -228,15 +228,17 @@ traj.controller('MainController', function ($scope, eventService, $location) {
     var marker;
     console.log("Main is starting " + eventService.traj);
     var path = [];
+    var markers = [];
     var bounds = new google.maps.LatLngBounds();
     for	(index = 0; index < eventService.traj.length; index++) {
       var event = eventService.traj[index];
       var myLatlng = new google.maps.LatLng(event.lat,event.lng);
-      path.push(myLatlng);
+      //path.push(myLatlng);
       marker = new google.maps.Marker({
-            map: map,
+      //      map: map,
             position: myLatlng
       });
+      markers.push(marker);
       var idid = angular.copy(event.id);
       google.maps.event.addListener(marker, 'click', (function(marker, idid, event) {
           return function() { $scope.select(event);  }
@@ -251,15 +253,17 @@ traj.controller('MainController', function ($scope, eventService, $location) {
       }
 
     }
-    var flightPath = new google.maps.Polyline({
+    /*var flightPath = new google.maps.Polyline({
       path: path,
       geodesic: true,
       strokeColor: '#444444',
       strokeOpacity: 0.5,
       strokeWeight: 3
     });
+    flightPath.setMap(map);*/
+    var mcOptions = {gridSize: 50, maxZoom: 15};
+    var mc = new MarkerClusterer(map, markers, mcOptions);
 
-    flightPath.setMap(map);
     map.fitBounds(bounds);
     timeline.fit();
     timeline.on('select', function (properties) {
