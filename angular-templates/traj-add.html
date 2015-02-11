@@ -2,12 +2,12 @@
 
 	<div class="col-md-4 well">
 		<form class="form-signin" role="form" novalidate>
-			<h2 class="form-signin-heading">Quoi</h2>
+			<h2 class="form-signin-heading">{{ 'WHAT' | translate}}</h2>
 			<label for="inputEmail" class="sr-only">Courriel</label>
-			<input class="form-control"  placeholder="Titre"
+			<input class="form-control"  placeholder="{{ 'TITLE' | translate}}"
 				ng-model="event.title"  />
 			<textarea class="form-control"
-				rows="10" placeholder="Description" ng-model="event.description">
+				rows="10" placeholder="{{ 'DESCRIPTION' | translate}}" ng-model="event.description">
 			</textarea>
 			<input class="form-control"  placeholder="Tags"
 				ng-model="event.tags"  />
@@ -15,7 +15,7 @@
 	</div>
 	<div class="col-md-4 well">
 		<form class="form-signin" role="form" novalidate>
-			<h2 class="form-signin-heading">Où</h2>
+			<h2 class="form-signin-heading">{{ 'WHERE' | translate}}</h2>
 			<input id="address" type="textbox" ng-model="event.place" ng-change="change()" placeholder="Ville, Pays">
       		<input class="btn btn-primary btn-mini" type="button" value="Geocode" ng-click="codeAddress()">
 
@@ -25,11 +25,11 @@
 	</div>
 	<div class="col-md-4 well">
 		<form class="form-signin" role="form" novalidate>
-			<h2 class="form-signin-heading">Quand</h2>
+			<h2 class="form-signin-heading">{{ 'WHEN' | translate}}</h2>
 
 			<select class="form-control" ng-model="event.type">
-			  <option value="Ponctual">Ponctuel</option>
-			  <option value="Period">Période</option>
+			  <option value="Ponctual">{{ 'PONCTUAL' | translate}}</option>
+			  <option value="Period">{{ 'PERIOD' | translate}}</option>
 
 			</select>
 			<div>

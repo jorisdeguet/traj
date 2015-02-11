@@ -19,7 +19,15 @@ traj_i18n.config(function ($translateProvider) {
     LOAD_A_FILE : 'Load the file',
     EVENTS : 'Events',
     IMPORTS : 'Events to import',
-    FLUSH : 'Flush'
+    FLUSH : 'Flush',
+    TITLE : 'Title',
+    DESCRIPTION : 'Description',
+    PLACE : 'Place',
+    WHAT : 'What',
+    WHERE : 'Where',
+    WHEN : 'When',
+    PONCTUAL : 'Event',
+    PERIOD : 'Period'
   });
   $translateProvider.translations('fr', {
     HOME: 'Accueil',
@@ -39,7 +47,15 @@ traj_i18n.config(function ($translateProvider) {
     LOAD_A_FILE : 'Chargez le fichier',
     EVENTS : 'Événements',
     IMPORTS : 'Événements à importer',
-    FLUSH : 'Vider'
+    FLUSH : 'Vider',
+    TITLE : 'Titre',
+    DESCRIPTION : 'Description',
+    PLACE : 'Lieu',
+    WHAT : 'Quoi',
+    WHERE : 'Où',
+    WHEN : 'Quand',
+    PONCTUAL : 'Événement ponctuel',
+    PERIOD : 'Période'
   });
   $translateProvider.preferredLanguage('fr');
 });

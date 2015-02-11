@@ -235,7 +235,7 @@ traj.controller('MainController', function ($scope, eventService, $location) {
       var myLatlng = new google.maps.LatLng(event.lat,event.lng);
       //path.push(myLatlng);
       marker = new google.maps.Marker({
-      //      map: map,
+            map: map,
             position: myLatlng
       });
       markers.push(marker);
@@ -261,8 +261,8 @@ traj.controller('MainController', function ($scope, eventService, $location) {
       strokeWeight: 3
     });
     flightPath.setMap(map);*/
-    var mcOptions = {gridSize: 50, maxZoom: 15};
-    var mc = new MarkerClusterer(map, markers, mcOptions);
+    //var mcOptions = {gridSize: 50, maxZoom: 15};
+    //var mc = new MarkerClusterer(map, markers, mcOptions);
 
     map.fitBounds(bounds);
     timeline.fit();
