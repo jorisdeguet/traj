@@ -23,9 +23,13 @@
 		<p>
 			<span class="label label-warning">{{selectedEvent.place}} </span>
 		</p>
+		<h3>{{'DATE' | translate}}</h3>
+		<p>
+			<span class="label label-warning">{{selectedEvent.date | date : 'yyyy.MM.dd'}} </span>
+		</p>
 		<p>
 			<a href="#edit/{{selectedEvent.id}}" class="btn btn-warning">Modifier</a>
-			<a href="#share/{{selectedEvent.id}}" class="btn btn-warning">{{'SHARE' | translate}}</a>
+			<a href="#share/{{selectedEvent.id}}" class="btn btn-primary">{{'SHARE' | translate}}</a>
 		</p>
 
 	</div>

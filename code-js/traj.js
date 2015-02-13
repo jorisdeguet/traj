@@ -83,15 +83,15 @@ traj.controller('NavbarController', function ($scope, $location, eventService, $
 		//window.open(dataURI,"_blank");
 	}
 
-  $scope.shareAll = function(){
-    var compressed = LZString.compressToEncodedURIComponent(eventService.allAsJson());
-    console.log("Size of compressed sample is: " + compressed.length);
-    console.log(compressed);
-    var recov = LZString.decompressFromEncodedURIComponent(compressed);
-    console.log("Sample is: " + (recov === eventService.allAsJson()));
-    var dataURI = '#import/' + compressed;
-    window.open(dataURI,'_blank');
-  }
+  // $scope.shareAll = function(){
+  //   var compressed = LZString.compressToEncodedURIComponent(eventService.allAsJson());
+  //   console.log("Size of compressed sample is: " + compressed.length);
+  //   console.log(compressed);
+  //   var recov = LZString.decompressFromEncodedURIComponent(compressed);
+  //   console.log("Sample is: " + (recov === eventService.allAsJson()));
+  //   var dataURI = '#import/' + compressed;
+  //   window.open(dataURI,'_blank');
+  // }
 
 	$scope.empty = function(){
     eventService.empty();
@@ -187,7 +187,7 @@ traj.controller('ImportController', function ($scope,filterFilter, eventService,
 traj.controller('ShareController', function ($scope, eventService, $routeParams) {
   var id = $routeParams.id;
   if (typeof $routeParams.id == 'undefined'){
-    console.log("Share all");
+    console.log("Share all ");
     $scope.json = eventService.allAsJson();
     //console.log(json);
     $scope.link = LZString.compressToEncodedURIComponent($scope.json);
@@ -201,79 +201,6 @@ traj.controller('ShareController', function ($scope, eventService, $routeParams)
   }
 });
 
-traj.controller('MainController', function ($scope, eventService, $location) {
-  $scope.markersMap = {};
-  $scope.selectedEvent = {};
-  var info = new google.maps.InfoWindow({content: ""});
-
-  $scope.select = function(evt){
-    // in the timeline
-    timeline.focus(evt.id);
-    timeline.setSelection(evt.id);
-    // on the map
-    var mark = $scope.markersMap[evt.id];
-    //map.setZoom(8);
-    map.panTo(mark.getPosition());
-    info.close();//hide the infowindow
-    info.setContent('<p>'+evt.title+'</p>');
-    $scope.$apply(function(){
-      $scope.selectedEvent = evt;
-    });
-    $('#title').html($scope.selectedEvent.title);
-    info.open(map, mark);
-  }
-
-  $scope.$on('$viewContentLoaded', function(){
-    items.clear();
-    var marker;
-    console.log("Main is starting " + eventService.traj);
-    var path = [];
-    var markers = [];
-    var bounds = new google.maps.LatLngBounds();
-    for	(index = 0; index < eventService.traj.length; index++) {
-      var event = eventService.traj[index];
-      var myLatlng = new google.maps.LatLng(event.lat,event.lng);
-      //path.push(myLatlng);
-      marker = new google.maps.Marker({
-            map: map,
-            position: myLatlng
-      });
-      markers.push(marker);
-      var idid = angular.copy(event.id);
-      google.maps.event.addListener(marker, 'click', (function(marker, idid, event) {
-          return function() { $scope.select(event);  }
-        })(marker, idid, event));
-      $scope.markersMap[idid] = marker;
-      bounds.extend(myLatlng);
-      if (typeof event.end == 'undefined'){
-        items.add([{id: event.id, content: event.title, start: event.date}]);
-      }
-      else{
-        items.add([{id: event.id, content: event.title, start: event.date, end: event.end, type:'range'}]);
-      }
-
-    }
-    /*var flightPath = new google.maps.Polyline({
-      path: path,
-      geodesic: true,
-      strokeColor: '#444444',
-      strokeOpacity: 0.5,
-      strokeWeight: 3
-    });
-    flightPath.setMap(map);*/
-    //var mcOptions = {gridSize: 50, maxZoom: 15};
-    //var mc = new MarkerClusterer(map, markers, mcOptions);
-
-    map.fitBounds(bounds);
-    timeline.fit();
-    timeline.on('select', function (properties) {
-        var id = properties.items[0];
-        console.log('selected items: ' + id);
-        $scope.select(eventService.get(id));
-
-    });
-  });
-});
 
 
 traj.controller('WelcomeController', function ($scope, $http, eventService, $route, $location) {
@@ -313,31 +240,4 @@ traj.controller('WelcomeController', function ($scope, $http, eventService, $rou
         $route.reload();
 		}
 	}
-});
-
-traj.directive('mapCanvas2', function() {
-	  return {
-		    link: function(scope, element) {
-
-		    	  var latlng = new google.maps.LatLng(-34.397, 150.644);
-		    	  var mapOptions = {
-		    	    zoom: 10,
-		    	    center: latlng
-		    	  }
-		    	  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-		    }
-	 };
-});
-
-traj.directive('mapCanvas', function() {
-	  return {
-		  scope: {},
-		  link: function(scope, element) {
-			      var mapOptions = {
-			        center: { lat: 45.0, lng: -75.0},
-			        zoom: 3
-			      };
-			      map = new google.maps.Map(element[0], mapOptions);
-	 }
-	 };
 });

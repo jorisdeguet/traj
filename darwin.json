@@ -1,0 +1,180 @@
+[
+  {
+    "type": "Ponctual",
+    "title": "Birth of Charles Darwin",
+    "place": "Shrewsbury England",
+    "lng": -2.7553268000000344,
+    "lat": 52.70730289999999,
+    "date": "1809-02-12T05:00:00.000Z",
+    "id": "27bf3d96-2347-4af3-8487-b9c5cfbdfc26"
+  },
+  {
+    "type": "Ponctual",
+    "title": "Departure of the Beagle",
+    "description": "Leaves the anchorage of Barn Pool",
+    "date": "1831-12-27T05:00:00.000Z",
+    "place": "Plymouth England",
+    "lng": -4.003498100000002,
+    "lat": 50.3173954,
+    "id": "21ac0830-6937-452d-9fa5-1e4ae303609a"
+  },
+  {
+    "type": "Ponctual",
+    "place": "Tenerife",
+    "lng": -16.629130400000008,
+    "lat": 28.2915637,
+    "title": "Beagle reaches the Canary islands",
+    "date": "1832-01-06T05:00:00.000Z",
+    "id": "5d327de5-6815-4877-9ba5-c8c3225e771e",
+    "tags": "Beagle"
+  },
+  {
+    "type": "Ponctual",
+    "description": "",
+    "place": "Tierra del fuego",
+    "lng": -67.74515650000001,
+    "lat": -54.3083548,
+    "title": "Tierra del Fuego",
+    "date": "1832-12-18T05:00:00.000Z",
+    "id": "7900359d-5fb1-4894-8be4-30de777579a3"
+  },
+  {
+    "type": "Ponctual",
+    "title": "Ascencion of Cerro La Campana",
+    "place": "Cerro La Campana",
+    "lng": -71.11944399999999,
+    "lat": -32.953611,
+    "description": "",
+    "date": "1834-08-17T04:00:00.000Z",
+    "id": "118f3fd0-f0d7-4415-981e-643efd07f6da"
+  },
+  {
+    "type": "Ponctual",
+    "place": "Down House, Luxted Road, Downe",
+    "lng": 0.0543784000000187,
+    "lat": 51.3245368,
+    "title": "Death of Charles Darwin",
+    "description": "",
+    "date": "1882-04-19T04:00:00.000Z",
+    "id": "b55020d2-396a-43c7-ac35-185161543aa8"
+  },
+  {
+    "type": "Ponctual",
+    "title": "Passing Honden Island",
+    "place": "Honden Island",
+    "lng": -138.8,
+    "lat": -14.8166667,
+    "description": "",
+    "date": "1835-11-09T05:00:00.000Z",
+    "id": "0c1ed4db-b7fb-4c70-904e-94cf91730823"
+  },
+  {
+    "type": "Ponctual",
+    "place": "Tahiti",
+    "lng": -149.40684299999998,
+    "lat": -17.679742,
+    "title": "Arrival in Tahiti",
+    "description": "Tahiti",
+    "date": "1835-11-15T05:00:00.000Z",
+    "id": "9ea78450-1be4-42a9-95c2-ff6276425e78"
+  },
+  {
+    "type": "Period",
+    "description": "",
+    "title": "Down House as main residence",
+    "place": "Down House, Luxted Road, Downe",
+    "date": "1842-09-14T04:00:00.000Z",
+    "end": "1882-04-19T04:00:00.000Z",
+    "id": "2fd9f648-ac54-432b-b84b-288f51c3a998",
+    "lng": 0.0543784000000187,
+    "lat": 51.3245368
+  },
+  {
+    "type": "Ponctual",
+    "place": "New Zealand",
+    "lng": 174.88597100000004,
+    "lat": -40.900557,
+    "date": "1835-12-19T05:00:00.000Z",
+    "title": "Arrival in New Zealand",
+    "id": "797941cd-1522-4a38-8a23-8d9d832b9147"
+  },
+  {
+    "type": "Ponctual",
+    "place": "Galápagos Islands",
+    "lng": -90.98206679999998,
+    "lat": -0.8292784,
+    "title": "Galápagos Islands",
+    "description": "",
+    "date": "1835-09-15T04:00:00.000Z",
+    "id": "7b9608a4-46e1-41b5-9113-980b317b7f8e"
+  },
+  {
+    "type": "Ponctual",
+    "date": "1836-01-12T05:00:00.000Z",
+    "place": "Australia",
+    "title": "Touching Australia",
+    "lng": 133.77513599999997,
+    "lat": -25.274398,
+    "id": "6ab01884-a3dc-4aed-b1d9-e55efcb85371"
+  },
+  {
+    "type": "Ponctual",
+    "place": "Cape of Good Hope South Africa",
+    "lng": 18.4737341,
+    "lat": -34.3570248,
+    "date": "1836-05-31T04:00:00.000Z",
+    "title": "Cape of Good Hope",
+    "id": "1e0d9a4d-dc29-40d5-8744-bd06907eefb1"
+  },
+  {
+    "type": "Ponctual",
+    "description": "",
+    "tags": "Beagle",
+    "place": "Falmouth, Cornwall",
+    "lng": -5.066270000000031,
+    "lat": 50.15257099999999,
+    "date": "1836-10-02T04:00:00.000Z",
+    "title": "Back to England",
+    "id": "3e91e23c-065b-410a-bd40-d78f37ea2698"
+  },
+  {
+    "type": "Ponctual",
+    "description": "",
+    "place": "Río Negro, Argentina",
+    "lng": -66.61764549999998,
+    "lat": -40.7344343,
+    "date": "1833-08-08T04:00:00.000Z",
+    "title": "Rio Negro",
+    "id": "31e35dd6-aa96-4342-99b9-efbbb6aa8783"
+  },
+  {
+    "type": "Ponctual",
+    "description": "Chiloé in the wet and heavily wooded Chonos Archipelago on 28 June 1834",
+    "place": "Chiloé Chonos Archipelago",
+    "lng": -73.94999999999999,
+    "lat": -45.1333,
+    "date": "1934-06-28T04:00:00.000Z",
+    "title": "Chiloé",
+    "id": "d10a3eb6-ed6c-4221-b5ff-b5222594b3b3"
+  },
+  {
+    "type": "Ponctual",
+    "description": "",
+    "date": "1834-07-23T04:00:00.000Z",
+    "place": "Valparaiso",
+    "lng": -71.61268849999999,
+    "lat": -33.047238,
+    "title": "Valparaiso",
+    "id": "b5988a75-50d0-4c5c-93be-8206e747f37d"
+  },
+  {
+    "type": "Ponctual",
+    "description": "",
+    "place": "Valdivia",
+    "lng": -73.24520999999999,
+    "lat": -39.819586,
+    "date": "1835-02-08T05:00:00.000Z",
+    "title": "Valdivia",
+    "id": "f5ef7627-0d8d-41b8-a8cd-88ae1f668281"
+  }
+]

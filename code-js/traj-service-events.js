@@ -1,7 +1,7 @@
 var serv = angular.module('eventService', []);
 
 
-serv.service('eventService', function ($window) {
+serv.service('eventService', function ($window, $filter) {
   console.log("Building Service");
   //console.log("window local  " + $window.localStorage.traj);
   var traj = [];
@@ -16,6 +16,7 @@ serv.service('eventService', function ($window) {
 
   this.add = function(event){
     console.log("Service add " + event.id);
+    event.date = new Date(event.date);
     if (typeof event.id == 'undefined'){
       console.log("undefined");
       // new event
@@ -34,11 +35,24 @@ serv.service('eventService', function ($window) {
     $window.localStorage.traj = JSON.stringify(this.traj, undefined, 2);
   }
 
+  this.inRange = function(start, end){
+    var result = [];
+    for (var i = 0 ; i < this.traj.length ; i++){
+      var evt = this.traj[i];
+      var dd = new Date(evt.date);
+      if (start.getTime() < dd.getTime() && dd.getTime() < end.getTime()){
+        result.push(evt);
+      }
+    }
+    var sorted = $filter('orderBy')(result, 'date');
+    return sorted;
+  }
+
   this.get = function(id){
     for (var i = 0 ; i < this.traj.length ; i++){
       var evt = this.traj[i];
       if (evt.id === id){
-        console.log("Found it");
+        //console.log("Found it");
         return evt;
       }
     }
