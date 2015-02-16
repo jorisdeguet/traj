@@ -1,53 +1,82 @@
 <div class="row" >
+	<form class="form-signin" role="form" name="addform" novalidate>
+		<div class="col-md-4 well">
 
-	<div class="col-md-4 well">
-		<form class="form-signin" role="form" novalidate>
-			<h2 class="form-signin-heading">{{ 'WHAT' | translate}}</h2>
-			<label for="inputEmail" class="sr-only">Courriel</label>
-			<input class="form-control"  placeholder="{{ 'TITLE' | translate}}"
-				ng-model="event.title"  />
-			<textarea class="form-control"
-				rows="10" placeholder="{{ 'DESCRIPTION' | translate}}" ng-model="event.description">
-			</textarea>
-			<input class="form-control"  placeholder="Tags"
-				ng-model="event.tags"  />
-		</form>
-	</div>
-	<div class="col-md-4 well">
-		<form class="form-signin" role="form" novalidate>
-			<h2 class="form-signin-heading">{{ 'WHERE' | translate}}</h2>
-			<input id="address" type="textbox" ng-model="event.place" ng-change="change()" placeholder="Ville, Pays">
-      		<input class="btn btn-primary btn-mini" type="button" value="Geocode" ng-click="codeAddress()">
+				<h2 class="form-signin-heading">{{ 'WHAT' | translate}}</h2>
+				<div class="form-group"
+				ng-class="{ 'has-error': addform.title.$invalid && addform.title.$dirty, 'has-success': addform.title.$valid }" >
+					<p>
+						<span class="label label-danger" ng-show="addform.title.$error.required">{{ 'ERROR_TITLE' | translate}}</span>
+					</p>
+					<input 	class="form-control"
+									name="title"
+									placeholder="{{ 'TITLE' | translate}}"
+									ng-model="event.title"
+									 required />
 
-			<div  map-canvas2  id="map-canvas" style="height:250px;width:100%;"></div>
+				</div>
+				<textarea class="form-control"
+					rows="10" placeholder="{{ 'DESCRIPTION' | translate}}" ng-model="event.description">
+				</textarea>
+				<input class="form-control"  placeholder="Tags"
+					ng-model="event.tags"  />
 
-		</form>
-	</div>
-	<div class="col-md-4 well">
-		<form class="form-signin" role="form" novalidate>
-			<h2 class="form-signin-heading">{{ 'WHEN' | translate}}</h2>
+		</div>
+		<div class="col-md-4 well">
 
-			<select class="form-control" ng-model="event.type">
-			  <option value="Ponctual">{{ 'PONCTUAL' | translate}}</option>
-			  <option value="Period">{{ 'PERIOD' | translate}}</option>
+				<h2 class="form-signin-heading">{{ 'WHERE' | translate}}</h2>
+				<p>
+					<span class="label label-danger" ng-show="addform.place.$error.required">{{ 'ERROR_PLACE' | translate}}</span>
+				</p>
+				<input
+					id="address"
+					type="textbox"
+					name="place"
+					ng-model="event.place"
+					ng-change="change()"
+					placeholder="{{ 'PLACE_HINT' | translate}}" required>
+	      <input class="btn btn-primary btn-mini" type="button" value="Geocode" ng-click="codeAddress()">
 
-			</select>
-			<div>
-        	<datepicker ng-model="event.date"  show-weeks="true" class="well well-sm"></datepicker>
-    	</div>
+				<p>
+					<span class="label label-danger" ng-show="event.lat == undefined">{{ 'ERROR_COORDINATES' | translate}}</span>
+				</p>
+				<div  map-canvas2  id="map-canvas" style="height:250px;width:100%;"></div>
 
-			<div ng-show="event.type === 'Period'">
-					<h3>Jusque</h3>
-					<datepicker ng-model="event.end"   show-weeks="true" class="well well-sm"></datepicker>
-			</div>
+		</div>
+		<div class="col-md-4 well">
+				<h2 class="form-signin-heading">{{ 'WHEN' | translate}}</h2>
 
-		</form>
-	</div>
-	<div class="col-md-12 ">
-		<button ng-click="add(event)"
-				class="btn btn-lg btn-primary btn-block">{{ 'SAVE' | translate}}</button>
-		<!--<pre>TOCREATE = {{event | json}}</pre> -->
-	</div>
+				<select class="form-control" ng-model="event.type">
+				  <option value="Ponctual">{{ 'PONCTUAL' | translate}}</option>
+				  <option value="Period">{{ 'PERIOD' | translate}}</option>
+
+				</select>
+				<div>
+						<span class="label label-danger" ng-show="addform.date.$error.required">
+							{{ 'ERROR_DATE' | translate}}
+						</span>
+	        	<datepicker name="date" ng-model="event.date"  show-weeks="true" class="well well-sm" required></datepicker>
+
+	    	</div>
+
+				<div ng-show="event.type === 'Period'">
+						<h3>Jusque</h3>
+						<span class="label label-danger" ng-show="addform.end.$error.required">
+							{{ 'ERROR_DATE_END' | translate}}
+						</span>
+						<datepicker name="end" ng-model="event.end" min-date="event.date"  show-weeks="true" class="well well-sm" required></datepicker>
+				</div>
+
+
+		</div>
+
+		<div class="col-md-12 ">
+			<button ng-click="add(event)" class="btn btn-lg btn-primary btn-block">{{ 'SAVE' | translate}}</button>
+			<!-- ng-disabled="addform.title.$invalid ||addform.place.$invalid" -->
+
+			<pre>TOCREATE = {{event | json}}</pre>
+		</div>
+	</form>
 
 
 </div>

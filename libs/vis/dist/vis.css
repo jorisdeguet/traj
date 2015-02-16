@@ -123,7 +123,7 @@
 
 .vis.timeline .labelset .vlabel .inner {
   display: inline-block;
-  padding: 5px;
+  padding: 1px;
 }
 
 .vis.timeline .labelset .vlabel .inner.hidden {
@@ -173,7 +173,7 @@
   border-width: 1px;
   background-color: #D5DDF6;
   display: inline-block;
-  padding: 5px;
+  padding: 1px;
 }
 
 .vis.timeline .item.selected {
@@ -205,7 +205,7 @@
 .vis.timeline .item.dot {
   position: absolute;
   padding: 0;
-  border-width: 4px;
+  border-width: 2px;
   border-style: solid;
   border-radius: 4px;
 }
@@ -237,7 +237,7 @@
   display: inline-block;
   overflow: hidden;
   max-width: 100%;
-  margin: 5px;
+  margin: 2px;
 }
 
 .vis.timeline .item.line {
@@ -468,7 +468,7 @@
 
 .vis.timeline .legend {
     background-color: rgba(247, 252, 255, 0.65);
-    padding: 5px;
+    padding: 2px;
     border-color: #b3b3b3;
     border-style:solid;
     border-width: 1px;

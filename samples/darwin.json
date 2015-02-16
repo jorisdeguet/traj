@@ -149,16 +149,6 @@
   },
   {
     "type": "Ponctual",
-    "description": "Chiloé in the wet and heavily wooded Chonos Archipelago on 28 June 1834",
-    "place": "Chiloé Chonos Archipelago",
-    "lng": -73.94999999999999,
-    "lat": -45.1333,
-    "date": "1934-06-28T04:00:00.000Z",
-    "title": "Chiloé",
-    "id": "d10a3eb6-ed6c-4221-b5ff-b5222594b3b3"
-  },
-  {
-    "type": "Ponctual",
     "description": "",
     "date": "1834-07-23T04:00:00.000Z",
     "place": "Valparaiso",
@@ -176,5 +166,15 @@
     "date": "1835-02-08T05:00:00.000Z",
     "title": "Valdivia",
     "id": "f5ef7627-0d8d-41b8-a8cd-88ae1f668281"
+  },
+  {
+    "type": "Ponctual",
+    "description": "Chiloé in the wet and heavily wooded Chonos Archipelago on 28 June 1834",
+    "place": "Chiloé Chonos Archipelago",
+    "lng": -73.94999999999999,
+    "lat": -45.1333,
+    "date": "1834-06-28T04:00:00.000Z",
+    "title": "Chiloé",
+    "id": "d10a3eb6-ed6c-4221-b5ff-b5222594b3b3"
   }
 ]

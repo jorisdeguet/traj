@@ -4,6 +4,7 @@
 
 //http://www.pluralsight.com/courses/angularjs-patterns-clean-code
 //https://github.com/johnpapa/angularjs-styleguide
+// https://github.com/MrRio/jsPDF
 
 var eventSource;
 
@@ -78,20 +79,8 @@ traj.controller('NavbarController', function ($scope, $location, eventService, $
 		var json = eventService.allAsJson();
     //console.log(json);
 		var dataURI = 'data:application/json;charset=utf-8,' + encodeURIComponent(json);
-		//console.log(dataURI);
     return dataURI;
-		//window.open(dataURI,"_blank");
 	}
-
-  // $scope.shareAll = function(){
-  //   var compressed = LZString.compressToEncodedURIComponent(eventService.allAsJson());
-  //   console.log("Size of compressed sample is: " + compressed.length);
-  //   console.log(compressed);
-  //   var recov = LZString.decompressFromEncodedURIComponent(compressed);
-  //   console.log("Sample is: " + (recov === eventService.allAsJson()));
-  //   var dataURI = '#import/' + compressed;
-  //   window.open(dataURI,'_blank');
-  // }
 
 	$scope.empty = function(){
     eventService.empty();
@@ -108,7 +97,7 @@ traj.controller('ListController', function ($scope, eventService) {
 });
 
 
-traj.controller('AddEditController', function ($scope,  $location, $routeParams, eventService) {
+traj.controller('AddEditController', function ($scope,$filter,  $location, $routeParams, eventService) {
 	if (typeof $routeParams.id != 'undefined' ){
     $scope.event = eventService.get($routeParams.id);
 	}
@@ -119,6 +108,30 @@ traj.controller('AddEditController', function ($scope,  $location, $routeParams,
 	console.log("id " + $routeParams.id);
 	$scope.add = function(event) {
     // TODO validation
+    if (typeof $scope.event.title == 'undefined'){
+      toastr.error($filter('translate')('ERROR_TITLE'));return;
+    }
+    if (typeof $scope.event.place == 'undefined'){
+      toastr.error($filter('translate')('ERROR_PLACE'));return;
+    }
+    if (typeof $scope.event.lng == 'undefined'){
+      toastr.error($filter('translate')('ERROR_COORDINATES'));return;
+    }
+    if (typeof $scope.event.date == 'undefined'){
+      toastr.error($filter('translate')('ERROR_DATE'));return;
+    }
+    if (typeof $scope.event.type != 'undefined' &&
+              $scope.event.type === 'Period'  &&
+              typeof $scope.event.end == 'undefined'){
+      toastr.error($filter('translate')('ERROR_DATE_END'));return;
+    }
+    if (typeof $scope.event.type != 'undefined' &&
+              $scope.event.type === 'Period'  &&
+              $scope.event.date >= $scope.event.end){
+      toastr.error($filter('translate')('ERROR_DATE_SWAP'));return;
+    }
+
+
     eventService.add(event);
     $location.path( "/list" );
 	};
@@ -133,15 +146,18 @@ traj.controller('AddEditController', function ($scope,  $location, $routeParams,
 		  geocoder = new google.maps.Geocoder();
 		  geocoder.geocode( { 'address': address}, function(results, status) {
 		    if (status == google.maps.GeocoderStatus.OK) {
-		      map.setCenter(results[0].geometry.location);
+          var latlng = results[0].geometry.location;
+		      map.setCenter(latlng);
 		      marker = new google.maps.Marker({
 		          map: map,
-		          position: results[0].geometry.location
+		          position: latlng
 		      });
-		      console.log(results[0].geometry.location);
-		      $scope.event.lng = results[0].geometry.location.D;
-		      $scope.event.lat = results[0].geometry.location.k;
-		      console.log($scope.event);
+		      //console.log(latlng);
+          $scope.$apply(function(){
+            $scope.event.lng = latlng.lng();
+            $scope.event.lat = latlng.lat();
+            console.log($scope.event);
+          });
 		    } else {
 		      alert('Geocode was not successful for the following reason: ' + status);
 		    }

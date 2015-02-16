@@ -78,6 +78,7 @@ traj.controller('MainController', function ($scope, eventService, $location) {
 
     });
     timeline.on('rangechanged', function (range) {
+        items.clear();
         var a = new Date(range.start);
         var b = new Date(range.end);
         //console.log('range: ' + a+"   - " +b );
@@ -94,16 +95,23 @@ traj.controller('MainController', function ($scope, eventService, $location) {
           //console.log(e.date);
           var marker = $scope.markersMap[e.id];
           // make the first event appear on top
-          var color = Math.floor( 1.0*i/inRange.length*250);
+          var color = Math.floor( 1.0*i/inRange.length*254);
           var rcolor = 255 - color;
           var hexa = ("00" +color.toString(16)).substr(-2);
           var rhexa = ("00" +rcolor.toString(16)).substr(-2);
-          $scope.itemsMap[id];
+          if (typeof e.end == 'undefined'){
+            it = {id: e.id, content: ""+(i+1)+" : "+e.title, start: e.date};
+          }
+          else{
+            it = {id: e.id, content: ""+(i+1)+" : "+e.title, start: e.date, end: e.end, type:'range'};
+          }
+          // add item and save it
+          items.add([it]);
           //console.log(hexa);
           marker.setOpacity(1);
           marker.setZIndex(1000-i);
           marker.setIcon("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld="
-          +(i+1)+"|"+hexa+"FF"+rhexa);
+          +(i+1)+"|"+"FF"+rhexa+rhexa);
           //marker.setIcon("http://chart.apis.google.com/chart?chst=d_bubble_icon_text_small&chld=ski|bb|"
           //+(i+1)+"|"+hexa+"FF"+rhexa+"|FF00FF");
         }

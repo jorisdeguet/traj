@@ -20,9 +20,20 @@ traj_i18n.config(function ($translateProvider) {
     EVENTS : 'Events',
     IMPORTS : 'Events to import',
     FLUSH : 'Flush',
+
     TITLE : 'Title',
     DESCRIPTION : 'Description',
     PLACE : 'Place',
+    PLACE_HINT :'Address or coordinates',
+
+    ERROR_TITLE : 'Please enter a Title',
+    ERROR_DESCRIPTION : 'Please enter a Description',
+    ERROR_PLACE : 'Please specify a Place',
+    ERROR_COORDINATES : 'Place a marker on the map or Geocode',
+    ERROR_DATE : 'Please select a date',
+    ERROR_DATE_END : 'Please enter an end date',
+    ERROR_DATE_SWAP : 'The end is before the beginning',
+
     WHAT : 'What',
     WHERE : 'Where',
     WHEN : 'When',
@@ -51,6 +62,16 @@ traj_i18n.config(function ($translateProvider) {
     TITLE : 'Titre',
     DESCRIPTION : 'Description',
     PLACE : 'Lieu',
+    PLACE_HINT :'Adresse ou coordonnées',
+
+    ERROR_TITLE : 'Veuillez entrer un titre',
+    ERROR_DESCRIPTION : 'Veuillez entrer une description',
+    ERROR_PLACE : 'Veuillez entrer un lieu',
+    ERROR_COORDINATES : 'Placez un marqueur ou appuyez sur Geocode',
+    ERROR_DATE : 'Veuillez sélectionner une date',
+    ERROR_DATE_END : 'Veuillez entrer une date de fin',
+    ERROR_DATE_SWAP : 'La date de fin est après le début'
+
     WHAT : 'Quoi',
     WHERE : 'Où',
     WHEN : 'Quand',
