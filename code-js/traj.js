@@ -97,7 +97,7 @@ traj.controller('ListController', function ($scope, eventService) {
 });
 
 
-traj.controller('AddEditController', function ($scope,$filter,  $location, $routeParams, eventService) {
+traj.controller('AddEditController', function ($scope, $q,$filter,  $location, $routeParams, eventService) {
 	if (typeof $routeParams.id != 'undefined' ){
     $scope.event = eventService.get($routeParams.id);
 	}
@@ -107,7 +107,7 @@ traj.controller('AddEditController', function ($scope,$filter,  $location, $rout
   }
 	console.log("id " + $routeParams.id);
 	$scope.add = function(event) {
-    // TODO validation
+    // validation
     if (typeof $scope.event.title == 'undefined'){
       toastr.error($filter('translate')('ERROR_TITLE'));return;
     }
@@ -115,7 +115,18 @@ traj.controller('AddEditController', function ($scope,$filter,  $location, $rout
       toastr.error($filter('translate')('ERROR_PLACE'));return;
     }
     if (typeof $scope.event.lng == 'undefined'){
-      toastr.error($filter('translate')('ERROR_COORDINATES'));return;
+      var promise = geocodee($scope.event.place);
+      promise.then(
+        function(latlng) {
+          $scope.event.lng = latlng.lng();
+          $scope.event.lat = latlng.lat();
+          $scope.add($scope.event);
+        },
+        function(status) {
+          toastr.error('Geocoder was not successful for the following reason: ' + status);
+        }
+      );
+      return;
     }
     if (typeof $scope.event.date == 'undefined'){
       toastr.error($filter('translate')('ERROR_DATE'));return;
@@ -142,27 +153,42 @@ traj.controller('AddEditController', function ($scope,$filter,  $location, $rout
   }
   var marker;
 	$scope.codeAddress = function() {
-		  var address = document.getElementById('address').value;
-		  geocoder = new google.maps.Geocoder();
-		  geocoder.geocode( { 'address': address}, function(results, status) {
-		    if (status == google.maps.GeocoderStatus.OK) {
-          var latlng = results[0].geometry.location;
-		      map.setCenter(latlng);
-		      marker = new google.maps.Marker({
-		          map: map,
-		          position: latlng
-		      });
-		      //console.log(latlng);
-          $scope.$apply(function(){
-            $scope.event.lng = latlng.lng();
-            $scope.event.lat = latlng.lat();
-            console.log($scope.event);
-          });
-		    } else {
-		      alert('Geocode was not successful for the following reason: ' + status);
-		    }
-		 });
+    var address = document.getElementById('address').value;
+    var promise = geocodee(address);
+    promise.then(
+      function(latlng) {
+        map.setCenter(latlng);
+        marker = new google.maps.Marker({
+            map: map,
+            position: latlng
+        });
+        //console.log(latlng);
+        $scope.$apply(function(){
+          $scope.event.lng = latlng.lng();
+          $scope.event.lat = latlng.lat();
+          console.log($scope.event);
+        });
+      },
+      function(status) {
+        toastr.error('Geocoder was not successful for the following reason: ' + status);
+      }
+    );
 	}
+
+  function geocodee(address) {
+    var deferred = $q.defer();
+    geocoder = new google.maps.Geocoder();
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        var latlng = results[0].geometry.location;
+        deferred.resolve(latlng);
+      } else {
+        deferred.reject(status);
+      }
+    });
+    return deferred.promise;
+  }
+
 });
 
 traj.controller('ImportController', function ($scope,filterFilter, eventService, $location, $routeParams) {

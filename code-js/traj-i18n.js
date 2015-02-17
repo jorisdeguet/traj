@@ -70,7 +70,7 @@ traj_i18n.config(function ($translateProvider) {
     ERROR_COORDINATES : 'Placez un marqueur ou appuyez sur Geocode',
     ERROR_DATE : 'Veuillez sélectionner une date',
     ERROR_DATE_END : 'Veuillez entrer une date de fin',
-    ERROR_DATE_SWAP : 'La date de fin est après le début'
+    ERROR_DATE_SWAP : 'La date de fin est après le début',
 
     WHAT : 'Quoi',
     WHERE : 'Où',
