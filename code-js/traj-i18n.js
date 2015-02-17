@@ -33,6 +33,7 @@ traj_i18n.config(function ($translateProvider) {
     ERROR_DATE : 'Please select a date',
     ERROR_DATE_END : 'Please enter an end date',
     ERROR_DATE_SWAP : 'The end is before the beginning',
+    ERROR_GEOCODER : 'No place is found for this address',
 
     WHAT : 'What',
     WHERE : 'Where',
@@ -71,6 +72,7 @@ traj_i18n.config(function ($translateProvider) {
     ERROR_DATE : 'Veuillez sélectionner une date',
     ERROR_DATE_END : 'Veuillez entrer une date de fin',
     ERROR_DATE_SWAP : 'La date de fin est après le début',
+    ERROR_GEOCODER : 'On ne trouve rien pour cette adresse',
 
     WHAT : 'Quoi',
     WHERE : 'Où',

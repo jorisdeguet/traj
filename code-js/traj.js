@@ -141,8 +141,6 @@ traj.controller('AddEditController', function ($scope, $q,$filter,  $location, $
               $scope.event.date >= $scope.event.end){
       toastr.error($filter('translate')('ERROR_DATE_SWAP'));return;
     }
-
-
     eventService.add(event);
     $location.path( "/list" );
 	};
@@ -152,6 +150,7 @@ traj.controller('AddEditController', function ($scope, $q,$filter,  $location, $
     console.log("adress " + address);
   }
   var marker;
+
 	$scope.codeAddress = function() {
     var address = document.getElementById('address').value;
     var promise = geocodee(address);
@@ -162,7 +161,6 @@ traj.controller('AddEditController', function ($scope, $q,$filter,  $location, $
             map: map,
             position: latlng
         });
-        //console.log(latlng);
         $scope.$apply(function(){
           $scope.event.lng = latlng.lng();
           $scope.event.lat = latlng.lat();
@@ -170,7 +168,7 @@ traj.controller('AddEditController', function ($scope, $q,$filter,  $location, $
         });
       },
       function(status) {
-        toastr.error('Geocoder was not successful for the following reason: ' + status);
+        toastr.error($filter('translate')('ERROR_GEOCODER') +" : " +status);
       }
     );
 	}
