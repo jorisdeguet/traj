@@ -1,97 +1,17 @@
 [
   {
     "type": "Ponctual",
-    "date": "2001-09-11T11:59:00.000Z",
-    "description": "American Airlines Flight 11, a Boeing 767 with 92 people aboard, takes off from Boston’s Logan International Airport en route to Los Angeles",
-    "title": "AA11 departure",
-    "place": "Logan airport Boston",
-    "lng": -71.00956020000001,
-    "lat": 42.3656132,
-    "id": "3f80b896-5801-475b-921d-8818515145c8"
+    "title": "South Tower collapses",
+    "description": "The South Tower of the World Trade Center collapses.",
+    "date": "2001-09-11T13:59:00.000Z",
+    "place": "40.71125 -74.0135",
+    "lng": -74.0129258,
+    "lat": 40.7107758,
+    "id": "eefad71d-e79c-46b7-b9c7-0ceb7c345e41"
   },
   {
     "type": "Ponctual",
-    "description": "United Airlines Flight 175, a Boeing 767 with 65 people aboard, takes off from Boston; it is also headed to Los Angeles.",
-    "title": "UA175 departure",
-    "place": "Logan Airport Boston",
-    "date": "2001-09-11T12:14:00.000Z",
-    "lng": -71.00956020000001,
-    "lat": 42.3656132,
-    "id": "4a7a4edb-ea66-40b8-80fc-8d19d6d1e155"
-  },
-  {
-    "type": "Ponctual",
-    "description": "8:46 am – Mohammed Atta and the other hijackers aboard American Airlines Flight 11 crash the plane into floors 93-99 of the North Tower of the World Trade Center, killing everyone on board and hundreds inside the building.",
-    "date": "2001-09-11T12:46:00.000Z",
-    "place": "World Trade Center, NY",
-    "title": "AA11 Crash on North Tower",
-    "lng": -74.01350000000002,
-    "lat": 40.712778,
-    "id": "786b0b9f-9010-43b2-9ae9-553d4509e013"
-  },
-  {
-    "type": "Ponctual",
-    "description": "White House Chief of Staff Andrew Card alerts President George W. Bush that a plane has hit the World Trade Center; the president is visiting an elementary school in Sarasota, Florida at the time.",
-    "title": "G.W. Bush is warned",
-    "place": "Sarasota, Florida",
-    "date": "2001-09-11T12:50:00.000Z",
-    "lng": -82.53065270000002,
-    "lat": 27.3364347,
-    "id": "fa9e7c9c-47fa-4fa4-a717-95ad74aa8382"
-  },
-  {
-    "type": "Ponctual",
-    "description": "Hijackers crash United Airlines Flight 175 into floors 75-85 of the WTC’s South Tower, killing everyone on board and hundreds inside the building",
-    "date": "2001-09-11T13:03:00.000Z",
-    "place": "World Trade Center, NY",
-    "title": "UA175 Crash in South Tower",
-    "lng": -74.01350000000002,
-    "lat": 40.712778,
-    "id": "746f8cde-21c6-46f9-b7d9-eb90e10111d1"
-  },
-  {
-    "type": "Ponctual",
-    "description": "United Airlines Flight 93, a Boeing 757 with 44 people aboard, takes off from Newark International Airport en route to San Francisco. It had been scheduled to depart at 8:00 am, around the time of the other hijacked flights.",
-    "date": "2001-09-11T12:41:00.000Z",
-    "title": "UA93 departure",
-    "place": "Newark International Airport",
-    "lng": -74.17446239999998,
-    "lat": 40.6895314,
-    "id": "f678e786-3fff-4180-bd2b-077106ce8609"
-  },
-  {
-    "type": "Ponctual",
-    "description": "American Airlines Flight 77 takes off from Dulles International Airport outside of Washington, D.C. The Boeing 757 is headed to Los Angeles with 64 people aboard.",
-    "date": "2001-09-11T12:20:00.000Z",
-    "place": "Dulles International Airport",
-    "title": "AA77 Departure",
-    "lng": -77.45653879999998,
-    "lat": 38.9531162,
-    "id": "cf175d86-b4d9-4e43-b8ee-81de52b94f70"
-  },
-  {
-    "type": "Ponctual",
-    "description": "Hijackers aboard Flight 77 crash the plane into the western façade of the Pentagon in Washington, D.C., killing 59 aboard the plane and 125 military and civilian personnel inside the building.",
-    "date": "2001-09-11T13:37:00.000Z",
-    "place": "Pentagon, USA",
-    "title": "AA77 crashes on the Pentagon",
-    "lng": -77.05626689999997,
-    "lat": 38.8718568,
-    "id": "06b03be0-512d-4ef9-97d7-1b816180c294"
-  },
-  {
-    "type": "Ponctual",
-    "description": "After passengers and crew members aboard the hijacked Flight 93 contact friends and family and learn about the attacks in New York and Washington, they mount an attempt to retake the plane. In response, hijackers deliberately crash the plane into a field in Somerset County, Pennsylvania, killing all 40 passengers and crew aboard.",
-    "date": "2001-09-11T14:07:00.000Z",
-    "place": "Somerset County, Pennsylvania",
-    "title": "UA93 Crashes in a field",
-    "lng": -78.92882420000001,
-    "lat": 40.022493,
-    "id": "69810348-d514-4c73-98ca-439a99e23676"
-  },
-  {
-    "type": "Ponctual",
-    "description": "President Bush addresses the nation, calling the attacks “evil, despicable acts of terror” and declaring that America, its friends and allies would “stand together to win the war against terrorism.”",
+    "description": "G.W. Bush makes a TV intervention calling the events an \"evil, despicable acts of terror\".\nHe sets a goal \"to win the war against terrorism\".",
     "place": "White House USA",
     "date": "2001-09-12T00:30:00.000Z",
     "title": "G.W. Bush TV intervention",
@@ -101,42 +21,122 @@
   },
   {
     "type": "Ponctual",
-    "description": "The 47-story Seven World Trade Center collapses after burning for hours; the building had been evacuated in the morning, and there are no casualties, though the collapse forces rescue workers to flee for their lives.",
+    "description": "The North Tower collapses (102 minutes after the crash of AA11)",
+    "title": "North Tower collapses",
+    "date": "2001-09-11T14:28:00.000Z",
+    "place": "40.7120 -74.0130",
+    "lng": -74.0130901,
+    "lat": 40.7120041,
+    "id": "c6cf9677-686d-47e0-9c17-3f7000919f80"
+  },
+  {
+    "type": "Ponctual",
+    "description": "The 47-story Seven World Trade Center collapses. No casualties.",
     "place": "World Trade Center, NY",
     "date": "2001-09-11T21:20:00.000Z",
-    "title": "Seven World Trade Center collapses",
+    "title": "Seven WTC collapses",
     "lng": -74.01350000000002,
     "lat": 40.712778,
     "id": "abfd854b-d2de-4a69-839c-b7c093c5224b"
   },
   {
     "type": "Ponctual",
-    "title": "South Tower collapses",
-    "description": "The South Tower of the World Trade Center collapses.",
-    "date": "2001-09-11T13:59:00.000Z",
-    "place": "World Trade Center, NY",
-    "lng": -74.01350000000002,
-    "lat": 40.712778,
-    "id": "eefad71d-e79c-46b7-b9c7-0ceb7c345e41"
+    "description": "Passengers and crew members try to retake the plane. Hijackers deliberately crash the plane, killing all 40 passengers and crew aboard.",
+    "date": "2001-09-11T14:07:00.000Z",
+    "place": "Indian Lake, Pennsylvania",
+    "title": "UA93 crashes in a field",
+    "lng": -78.85224470000003,
+    "lat": 40.0467459,
+    "id": "69810348-d514-4c73-98ca-439a99e23676"
   },
   {
     "type": "Ponctual",
-    "description": "The World Trade Center’s North Tower collapses, 102 minutes after being struck by Flight 11.",
-    "title": "North Tower collapses",
-    "date": "2001-09-11T14:28:00.000Z",
-    "place": "World Trade Center",
-    "lng": -74.01350000000002,
-    "lat": 40.712778,
-    "id": "c6cf9677-686d-47e0-9c17-3f7000919f80"
-  },
-  {
-    "type": "Ponctual",
-    "description": "Amid escalating rumors of other attacks, U.S. Capitol building are evacuated (along with numerous other high-profile buildings, landmarks and public spaces).",
+    "description": "Capitol building is evacuated (along with numerous other high-profile buildings, landmarks and public spaces).",
     "date": "2001-09-11T13:45:00.000Z",
     "title": "Capitol evacuation",
     "place": "Capitol Washington",
     "lng": -76.99973109999996,
     "lat": 38.8942557,
     "id": "1c1b33fa-467f-4cc6-820e-b3fc4350de77"
+  },
+  {
+    "type": "Ponctual",
+    "description": "Hijackers crash AA77 into the western aisle of the Pentagon. 59 casualties from the plane and 125 military and civilian killed inside.",
+    "date": "2001-09-11T13:37:00.000Z",
+    "place": "Pentagon, USA",
+    "title": "AA77 crashes on the Pentagon",
+    "lng": -77.05626689999997,
+    "lat": 38.8718568,
+    "id": "06b03be0-512d-4ef9-97d7-1b816180c294"
+  },
+  {
+    "type": "Ponctual",
+    "description": "Hijackers crash the plane into the WTC’s South Tower (between levels 75 and 85).",
+    "date": "2001-09-11T13:03:00.000Z",
+    "place": "40.7112 -74.013500",
+    "title": "UA175 Crash in South Tower",
+    "lng": -74.0129258,
+    "lat": 40.7107758,
+    "id": "746f8cde-21c6-46f9-b7d9-eb90e10111d1"
+  },
+  {
+    "type": "Ponctual",
+    "description": "George W. Bush is warned that a plane has hit the WTC during a visit to an elementary school in Sarasota.\n\nhttps://www.youtube.com/watch?v=IedVRYUNWUU",
+    "title": "G.W. Bush is warned",
+    "place": "Sarasota, Florida",
+    "date": "2001-09-11T12:50:00.000Z",
+    "lng": -82.53065270000002,
+    "lat": 27.3364347,
+    "id": "fa9e7c9c-47fa-4fa4-a717-95ad74aa8382"
+  },
+  {
+    "type": "Ponctual",
+    "description": "Hijackers crash the plane into floors 93-99 of the North Tower.",
+    "date": "2001-09-11T12:46:00.000Z",
+    "place": "40.7120 -74.0130",
+    "title": "AA11 Crash on North Tower",
+    "lng": -74.0130901,
+    "lat": 40.7120041,
+    "id": "786b0b9f-9010-43b2-9ae9-553d4509e013"
+  },
+  {
+    "type": "Ponctual",
+    "description": "United Airlines Flight 93 (Boeing 757)takes off heading to San Francisco. There are 44 people aboard.",
+    "date": "2001-09-11T12:41:00.000Z",
+    "title": "UA93 departure",
+    "place": "Newark International Airport",
+    "lng": -74.17446239999998,
+    "lat": 40.6895314,
+    "id": "f678e786-3fff-4180-bd2b-077106ce8609"
+  },
+  {
+    "type": "Ponctual",
+    "description": "American Airlines Flight 77 (Boeing 757) takes off heading to Los Angeles.There are 64 people aboard.",
+    "date": "2001-09-11T12:20:00.000Z",
+    "place": "Dulles International Airport",
+    "title": "AA77 Departure",
+    "lng": -77.45653879999998,
+    "lat": 38.9531162,
+    "id": "cf175d86-b4d9-4e43-b8ee-81de52b94f70"
+  },
+  {
+    "type": "Ponctual",
+    "description": "United Airlines Flight 175 (Boeing 767) with 65 people aboard, takes off, heading to Los Angeles.",
+    "title": "UA175 departure",
+    "place": "Logan Airport Boston",
+    "date": "2001-09-11T12:14:00.000Z",
+    "lng": -71.00956020000001,
+    "lat": 42.3656132,
+    "id": "4a7a4edb-ea66-40b8-80fc-8d19d6d1e155"
+  },
+  {
+    "type": "Ponctual",
+    "date": "2001-09-11T11:59:00.000Z",
+    "description": "American Airlines Flight 11 (Boeing 767) with 92 people aboard, takes off heading to Los Angeles",
+    "title": "AA11 departure",
+    "place": "Logan airport Boston",
+    "lng": -71.00956020000001,
+    "lat": 42.3656132,
+    "id": "3f80b896-5801-475b-921d-8818515145c8"
   }
 ]

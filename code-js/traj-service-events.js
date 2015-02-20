@@ -33,6 +33,7 @@ serv.service('eventService', function ($window, $filter) {
       this.traj.push(event);
     }
     $window.localStorage.traj = JSON.stringify(this.traj, undefined, 2);
+    this.traj = JSON.parse($window.localStorage.traj);
   }
 
   this.inRange = function(start, end){
