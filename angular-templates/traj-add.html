@@ -45,29 +45,65 @@
 		</div>
 		<div class="col-md-4 well">
 				<h2 class="form-signin-heading">{{ 'WHEN' | translate}}</h2>
+				<p>
+					<select class="form-control" ng-model="event.type">
+					  <option value="Ponctual">{{ 'PONCTUAL' | translate}}</option>
+					  <option value="Period">{{ 'PERIOD' | translate}}</option>
+					</select>
+				</p>
+				<div class="row">
+						<p>
+							<span class="label label-danger" ng-show="addform.date.$error.required">
+								{{ 'ERROR_DATE' | translate}}
+							</span>
+						</p>
+						<div class="form-group col-md-6">
+							<p class="input-group" >
+								<input
+									name="date"
+									type="text" class="form-control"
+									datepicker-popup="{{'yyyy.MM.dd'}}" ng-model="event.date"
+									placeholder="1999.12.31"
+									is-open="openedStart"
+									required/>
 
-				<select class="form-control" ng-model="event.type">
-				  <option value="Ponctual">{{ 'PONCTUAL' | translate}}</option>
-				  <option value="Period">{{ 'PERIOD' | translate}}</option>
-
-				</select>
-				<div>
-						<span class="label label-danger" ng-show="addform.date.$error.required">
-							{{ 'ERROR_DATE' | translate}}
-						</span>
-	        	<datepicker name="date" ng-model="event.date"  show-weeks="true" class="well well-sm" required></datepicker>
-
+								<span class="input-group-btn">
+									<button type="button" class="btn btn-default" ng-click="openStart($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+								</span>
+							</p>
+						</div>
+						<div class="form-group col-md-6" ng-show="event.date != undefined">
+							<timepicker ng-model="event.date" hour-step="1" minute-step="5" show-meridian="false"></timepicker>
+						</div>
 	    	</div>
 
-				<div ng-show="event.type === 'Period'">
+				<div class="row" ng-show="event.type === 'Period'">
 						<h3>Jusque</h3>
-						<span class="label label-danger" ng-show="addform.end.$error.required">
-							{{ 'ERROR_DATE_END' | translate}}
-						</span>
-						<datepicker name="end" ng-model="event.end" min-date="event.date"  show-weeks="true" class="well well-sm" required></datepicker>
+						<p>
+							<span class="label label-danger" ng-show="addform.end.$error.required">
+								{{ 'ERROR_DATE_END' | translate}}
+							</span>
+						</p>
+						<div class="form-group col-md-6">
+							<p class="input-group" >
+								<input
+									name="end"
+									type="text" class="form-control"
+									datepicker-popup="{{'yyyy.MM.dd'}}" ng-model="event.end"
+									min-date="event.date"
+									placeholder="1999.12.31"
+									is-open="openedEnd"
+									required/>
+
+								<span class="input-group-btn">
+									<button type="button" class="btn btn-default" ng-click="openEnd($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+								</span>
+							</p>
+						</div>
+						<div class="form-group col-md-6" ng-show="event.date != undefined">
+							<timepicker ng-model="event.date" hour-step="1" minute-step="5" show-meridian="false"></timepicker>
+						</div>
 				</div>
-
-
 		</div>
 
 		<div class="col-md-12 ">

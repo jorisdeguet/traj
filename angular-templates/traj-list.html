@@ -19,10 +19,13 @@
 				<tr ng-repeat="event in list  | filter:query | orderBy: 'date':true  track by event.id">
 					<td>{{ event.title }}</td>
 					<td>{{ event.description }}</td>
-					<td>{{ event.date | date : 'yyyy.MM.dd' }}</td>
+					<td>
+						{{ event.date | date : 'yyyy.MM.dd HH:mm' }}
+						<span ng-show="event.type ==='Period'">{{ event.end | date : 'yyyy.MM.dd HH:mm' }}</span>
+					</td>
 					<td>{{ event.place }}</td>
-					<td>{{ event.lat | number:1}}</td>
-					<td>{{ event.lng | number:1}}</td>
+					<td>{{ event.lat | number:4}}</td>
+					<td>{{ event.lng | number:4}}</td>
 					<td><a href="#edit/{{ event.id }}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>  </a></td>
 					<td><a href="#share/{{ event.id}}"><span class="glyphicon glyphicon-share" aria-hidden="true"></span> </a></td>
 					<td><a ng-click="remove(event.id)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> </a></td>

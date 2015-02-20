@@ -1,10 +1,9 @@
-//TODO http://stackoverflow.com/questions/12506329/how-to-dynamically-change-header-based-on-angularjs-partial-view
-
 //Angular module for votvot
 
 //http://www.pluralsight.com/courses/angularjs-patterns-clean-code
 //https://github.com/johnpapa/angularjs-styleguide
 // https://github.com/MrRio/jsPDF
+// to consider http://eonasdan.github.io/bootstrap-datetimepicker/
 
 var eventSource;
 
@@ -106,6 +105,23 @@ traj.controller('AddEditController', function ($scope, $q,$filter,  $location, $
     $scope.event.type = 'Ponctual';
   }
 	console.log("id " + $routeParams.id);
+
+  $scope.openStart = function($event) {
+    console.log("Open");
+    $event.preventDefault();
+    $event.stopPropagation();
+
+    $scope.openedStart = true;
+  };
+
+  $scope.openEnd = function($event) {
+    console.log("Open");
+    $event.preventDefault();
+    $event.stopPropagation();
+
+    $scope.openedEnd = true;
+  };
+
 	$scope.add = function(event) {
     // validation
     if (typeof $scope.event.title == 'undefined'){
@@ -118,6 +134,8 @@ traj.controller('AddEditController', function ($scope, $q,$filter,  $location, $
       var promise = geocodee($scope.event.place);
       promise.then(
         function(latlng) {
+          console.log(latlng);
+          console.log(latlng.lat());
           $scope.event.lng = latlng.lng();
           $scope.event.lat = latlng.lat();
           $scope.add($scope.event);
@@ -150,7 +168,6 @@ traj.controller('AddEditController', function ($scope, $q,$filter,  $location, $
     console.log("adress " + address);
   }
   var marker;
-
 	$scope.codeAddress = function() {
     var address = document.getElementById('address').value;
     var promise = geocodee(address);
@@ -161,11 +178,8 @@ traj.controller('AddEditController', function ($scope, $q,$filter,  $location, $
             map: map,
             position: latlng
         });
-        $scope.$apply(function(){
-          $scope.event.lng = latlng.lng();
-          $scope.event.lat = latlng.lat();
-          console.log($scope.event);
-        });
+        $scope.event.lng = latlng.lng();
+        $scope.event.lat = latlng.lat();
       },
       function(status) {
         toastr.error($filter('translate')('ERROR_GEOCODER') +" : " +status);

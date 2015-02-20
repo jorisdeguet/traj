@@ -10,6 +10,7 @@ traj.controller('MainController', function ($scope, eventService, $location) {
 
   $scope.select = function(evt){
     // in the timeline
+    timeline.moveTo(evt.date);
     timeline.focus(evt.id);
     timeline.setSelection(evt.id);
     // on the map
@@ -86,7 +87,7 @@ traj.controller('MainController', function ($scope, eventService, $location) {
         //console.log("in range " + inRange.length);
         for (var id in $scope.markersMap) {
           var marker = $scope.markersMap[id];
-          marker.setOpacity(0.2)
+          marker.setOpacity(0.5)
           marker.setZIndex(1); // grey ones should be under
           marker.setIcon("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=|CCCCCC");
         }
@@ -108,13 +109,14 @@ traj.controller('MainController', function ($scope, eventService, $location) {
           // add item and save it
           items.add([it]);
           //console.log(hexa);
-          marker.setOpacity(1);
+          marker.setOpacity(0.9);
           marker.setZIndex(1000-i);
           marker.setIcon("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld="
           +(i+1)+"|"+"FF"+rhexa+rhexa);
           //marker.setIcon("http://chart.apis.google.com/chart?chst=d_bubble_icon_text_small&chld=ski|bb|"
           //+(i+1)+"|"+hexa+"FF"+rhexa+"|FF00FF");
         }
+        timeline.setSelection($scope.selectedEvent.id);
     });
   });
 });

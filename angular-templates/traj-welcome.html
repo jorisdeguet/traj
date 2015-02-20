@@ -26,13 +26,21 @@
 		{{ 'IMPORT_FROM_FILE' | translate}}
 
 		<div class="well">
-			<input type="file" id="fileForUpload" /><button class="btn btn-primary" ng-click="load();">{{ 'LOAD_A_FILE' | translate}}</button>
+			<input
+			type="file"
+			id="fileForUpload"
+			onchange="angular.element(this).scope().load()"
+			/><button class="btn btn-primary" ng-click="load();">{{ 'LOAD_A_FILE' | translate}}</button>
 		</div>
 	</div>
 
 	<div class="col-md-4">
 		Importez depuis un lien qu'on a partagé avec vous:
-		<p><input type="test" id="urlToLoad"  placeholder="{{ 'URL_TO_LOAD' | translate}}"/></p>
+		<p><input
+			type="test"
+			id="urlToLoad"
+			placeholder="{{ 'URL_TO_LOAD' | translate}}"
+			/></p>
 		<p><button class="btn btn-primary" ng-click="loadFromURL();">Charger une URL</button></p>
 	</div>
 </div>

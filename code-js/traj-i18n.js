@@ -23,6 +23,7 @@ traj_i18n.config(function ($translateProvider) {
 
     TITLE : 'Title',
     DESCRIPTION : 'Description',
+    DATE : 'Date',
     PLACE : 'Place',
     PLACE_HINT :'Address or coordinates',
 
@@ -62,6 +63,7 @@ traj_i18n.config(function ($translateProvider) {
     FLUSH : 'Vider',
     TITLE : 'Titre',
     DESCRIPTION : 'Description',
+    DATE : 'Date',
     PLACE : 'Lieu',
     PLACE_HINT :'Adresse ou coordonnées',
 
