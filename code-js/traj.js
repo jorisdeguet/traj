@@ -234,8 +234,8 @@ traj.controller('ImportController', function ($scope,filterFilter, eventService,
   $scope.import = function(event){
     console.log("adding " + event);
     $scope.remove(event);
+    eventService.add(event);
   }
-  //console.log(events);
 });
 
 traj.controller('ShareController', function ($scope, eventService, $routeParams) {
