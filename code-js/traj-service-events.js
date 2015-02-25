@@ -14,6 +14,16 @@ serv.service('eventService', function ($window, $filter) {
   }
   console.log("Service is loaded");
 
+  this.validate = function(event){
+    if (typeof event.title == 'undefined') return false;
+    if (typeof event.place == 'undefined') return false;
+    if (typeof event.lat == 'undefined') return false;
+    if (typeof event.date == 'undefined') return false;
+    if (typeof event.type == 'undefined') return false;
+    if (event.type === 'Period' && event.date.getTime() > event.end.getTime()) return false;
+    return true;
+  }
+
   this.add = function(event){
     console.log("Service add " + event.id);
     event.date = new Date(event.date);

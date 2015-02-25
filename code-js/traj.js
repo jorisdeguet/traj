@@ -46,6 +46,10 @@ traj.config(['$routeProvider',
 		templateUrl: 'angular-templates/traj-list.html',
 		controller: 'ListController'
 	}).
+  when('/url/:url*', {
+    templateUrl: 'angular-templates/traj-welcome.html',
+    controller: 'ImportURLController'
+  }).
 	otherwise({
 		redirectTo: '/welcome'
 	});
@@ -203,6 +207,24 @@ traj.controller('AddEditController', function ($scope, $q,$filter,  $location, $
 
 });
 
+traj.controller('ImportURLController', function ($sce, $http, $window, eventService, $location, $routeParams) {
+  var u = $routeParams.url;
+  var url = $sce.trustAsResourceUrl(u);
+  console.log("url " + url);
+  $http.get(url).
+  success(function(data, status, headers, config) {
+    console.log("Success for results " + data.length  );
+    var json = JSON.stringify(data);
+    var link = LZString.compressToEncodedURIComponent(json);
+    $location.path('/import/'+link);
+  }).
+  error(function(data, status, headers, config) {
+    toastr.error("Error on this");
+    console.log("Error " + data );
+  });
+
+});
+
 traj.controller('ImportController', function ($scope,filterFilter, eventService, $location, $routeParams) {
   var data = $routeParams.data;
   console.log("data " + data);
@@ -261,13 +283,7 @@ traj.controller('WelcomeController', function ($scope, $http, eventService, $rou
   $scope.loadFromURL = function(){
     var url = document.getElementById("urlToLoad").value;
     console.log("From URL "  +url);
-    $http.get(url).
-    success(function(data, status, headers, config) {
-      console.log("Success for results " + data.length  );
-    }).
-    error(function(data, status, headers, config) {
-      console.log("Error " + data );
-    });
+
   }
 
 	$scope.load = function(){

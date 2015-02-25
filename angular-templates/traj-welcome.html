@@ -38,9 +38,14 @@
 		Importez depuis un lien qu'on a partagé avec vous:
 		<p><input
 			type="test"
+			ng-model="url"
 			id="urlToLoad"
 			placeholder="{{ 'URL_TO_LOAD' | translate}}"
-			/></p>
-		<p><button class="btn btn-primary" ng-click="loadFromURL();">Charger une URL</button></p>
+			/><a href="#url/{{url}}" class="btn btn-primary">Importer depuis l'URL</a></p>
+		<p>
+			Voici quelques exemples à importer depuis traj:
+			<a class="btn btn-warning" href="#url/http://traj.org/samples/911.json">9 Septembre</a>
+			<a class="btn btn-warning" href="#url/http://traj.org/samples/darwin.json">La vie de Charles Darwin</a>
+		</p>
 	</div>
 </div>
