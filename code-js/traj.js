@@ -237,7 +237,7 @@ traj.controller('ImportController', function ($scope,filterFilter, eventService,
     for (var i = 0 ; i < toImport.length ; i++){
       var elt = toImport[i];
       eventService.add(elt);
-      $location.path('/list');
+      $location.path('/main');
     }
   }
 
@@ -250,7 +250,7 @@ traj.controller('ImportController', function ($scope,filterFilter, eventService,
     }
     $scope.events.splice(index, 1);
     // nothing more to import go to the list
-    if ($scope.events.length == 0 ) {$location.path('/list');}
+    if ($scope.events.length == 0 ) {$location.path('/main');}
   }
 
   $scope.import = function(event){
@@ -300,13 +300,13 @@ traj.controller('WelcomeController', function ($scope, $http, eventService, $rou
             var event = events[i];
             eventService.add(event);
           }
-          $location.path('/list');
+          $location.path('/main');
           $route.reload();
 		    }
 		    reader.onerror = function (evt) {
 		        console.log("error reading file");
 		    }
-        $location.path('/list');
+        $location.path('/main');
         $route.reload();
 		}
 	}

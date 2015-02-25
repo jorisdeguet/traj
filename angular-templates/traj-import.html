@@ -2,10 +2,7 @@
 
 	<div class="col-md-12">
 		<div class="well">
-			<h1>{{'IMPORTS'| translate}} <span class="label label-primary">{{ events.length }}</span></h1>
-			<p>
-				<a href class="btn btn-success" ng-click="importAll(events)">Importer tout</a>
-			</p>
+			<h1>{{'IMPORTS'| translate}} <a href class="btn btn-success" ng-click="importAll(events)">{{'IMPORT' | translate}} {{events.length}} {{'EVENTS' | translate}}</a></h1>
 			<p>
 				Filtrer : <input type="text" ng-model="query">
 			</p>

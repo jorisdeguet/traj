@@ -10,13 +10,20 @@
 	<div class="col-md-8" style="height:350px;">
 		<div map-canvas id="map-canvas" style="height:100%;width:100%"></div>
 	</div>
-	<!-- <div class="col-md-4" ng-hide="$scope.selectedEvent != undefined">
-		Select an event to see its details
-	</div> -->
-	<div class="col-md-4" style="height:350px;overflow:scroll;" ng-show="$scope.selectedEvent == undefined">
+	<div class="col-md-4" ng-hide="isSelected()">
+		{{'SELECT_AN_EVENT' | translate}}
+	</div>
+	<div class="col-md-4" style="height:350px;overflow:scroll;" ng-show="isSelected()">
 		<p>
+			<a href="#edit/{{selectedEvent.id}}" class="btn btn-warning">
+				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			</a>
+			<a href="#edit/{{selectedEvent.id}}" class="btn btn-warning">
+				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			</a>
 			<a href="#edit/{{selectedEvent.id}}" class="btn btn-warning">{{'EDIT' | translate}}</a>
 			<a href="#share/{{selectedEvent.id}}" class="btn btn-primary">{{'SHARE' | translate}}</a>
+
 		</p>
 		<div class="panel panel-warning">
 			<div class="panel-heading">{{'TITLE' | translate}} : {{selectedEvent.title}}</div>

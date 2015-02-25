@@ -8,6 +8,10 @@ traj.controller('MainController', function ($scope, eventService, $location) {
   $scope.selectedEvent = {};
   var info = new google.maps.InfoWindow({content: ""});
 
+  $scope.isSelected = function(){
+    return $scope.selectedEvent.title != undefined;
+  }
+
   $scope.select = function(evt){
     // in the timeline
     timeline.moveTo(evt.date);

@@ -22,6 +22,7 @@ traj_i18n.config(function ($translateProvider) {
     LOAD_A_FILE : 'Load the file',
     EVENTS : 'Events',
     IMPORTS : 'Events to import',
+    IMPORT : 'Import',
     FLUSH : 'Flush',
 
     TITLE : 'Title',
@@ -29,6 +30,7 @@ traj_i18n.config(function ($translateProvider) {
     DATE : 'Date',
     PLACE : 'Place',
     PLACE_HINT :'Address or coordinates',
+    SELECT_AN_EVENT : 'Click on an event to see the details (on map or timeline)',
 
     ERROR_TITLE : 'Please enter a Title',
     ERROR_DESCRIPTION : 'Please enter a Description',
@@ -66,12 +68,14 @@ traj_i18n.config(function ($translateProvider) {
     LOAD_A_FILE : 'Chargez le fichier',
     EVENTS : 'Événements',
     IMPORTS : 'Événements à importer',
+    IMPORT : 'Importer',
     FLUSH : 'Vider',
     TITLE : 'Titre',
     DESCRIPTION : 'Description',
     DATE : 'Date',
     PLACE : 'Lieu',
     PLACE_HINT :'Adresse ou coordonnées',
+    SELECT_AN_EVENT : 'Sélectionner un événement sur la carte ou la ligne de temps pour voir le détail',
 
     ERROR_TITLE : 'Veuillez entrer un titre',
     ERROR_DESCRIPTION : 'Veuillez entrer une description',
