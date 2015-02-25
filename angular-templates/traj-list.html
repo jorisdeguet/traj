@@ -2,7 +2,12 @@
 
 	<div class="col-md-12">
 		<div class="well">
-			<h1>{{ 'EVENTS' | translate }} <span class="label label-primary">{{ traj.length }}</span></h1>
+			<h1>{{ 'EVENTS' | translate }}
+				<small>
+					<a class="btn btn-xs btn-primary" href="#main">{{'MAP' | translate}}</a>
+					<a class="btn btn-xs btn-primary" href="#shareAll">{{'SHARE' | translate}}</a>
+				</small>
+			</h1>
 			<!-- <input type="text" ng-model="query"> -->
 			<p class="input-group col-md-3 pull-right" >
 				<input

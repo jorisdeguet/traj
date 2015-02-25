@@ -454,7 +454,7 @@
 		<key>DrawerWidth</key>
 		<real>209</real>
 		<key>Frame</key>
-		<string>{{559, 32}, {540, 745}}</string>
+		<string>{{373, 32}, {540, 745}}</string>
 		<key>VisibleRegion</key>
 		<string>{{0, 0}, {525, 632}}</string>
 		<key>Zoom</key>

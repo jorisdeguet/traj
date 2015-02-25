@@ -30,13 +30,13 @@
 					<ul class="nav navbar-nav navbar-left" ng-controller="NavbarController">
 					<li><a href="#welcome">{{ 'HOME' | translate }}</a></li>
 					<li><a href="#add">{{ 'ADD' | translate }}</a></li>
-					<li><a href="#main">{{ 'MAP' | translate }}</a></li>
-					<li><a href="#list">{{ 'LIST' | translate }}</a></li>
+					<li ng-hide="numberOfEvents()==0" ><a href="#main">{{ 'MAP' | translate }}</a></li>
+					<li ng-hide="numberOfEvents()==0" ><a href="#list">{{ 'LIST' | translate }}</a></li>
 					<!-- <li><a href ng-click="save();">{{ 'SAVE' | translate }}</a></li> -->
-					<li><a target="_blank" download="traj.json" href="{{allAsDataURL()}}" >{{ 'SAVE' | translate }}</a></li>
-					<li><a href ng-click="empty();">{{ 'FLUSH' | translate }}</a></li>
+					<li ng-hide="numberOfEvents()==0" ><a target="_blank" download="traj.json" href="{{allAsDataURL()}}" >{{ 'SAVE' | translate }}</a></li>
+					<li ng-hide="numberOfEvents()==0" ><a href ng-click="empty();">{{ 'FLUSH' | translate }}</a></li>
 					<!-- <li><a href ng-click="shareAll();">{{ 'SHARE' | translate }}</a></li> -->
-					<li><a href="#shareAll">{{ 'SHARE' | translate }}</a></li>
+					<li ng-hide="numberOfEvents()==0" ><a href="#shareAll">{{ 'SHARE' | translate }}</a></li>
 					<li><a><span class="label label-primary">{{ numberOfEvents() }} {{ 'EVENTS' | translate }}</span></a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right" ng-controller="LocaleController">
