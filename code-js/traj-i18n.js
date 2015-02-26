@@ -8,6 +8,7 @@ traj_i18n.config(function ($translateProvider) {
     CREATE : 'Create',
     LANGUAGE : 'Language',
     RESULTS : 'Results',
+    FILTER : 'Filter',
     SEARCH : 'Search',
     LIST : 'List',
     MAP : 'Map',
@@ -16,9 +17,9 @@ traj_i18n.config(function ($translateProvider) {
     DELETE : 'Delete',
     EDIT : 'Edit',
     SHARE : 'Share',
+    DISCARD : 'Discard',
     COORDINATES : 'Coord.',
     URL_TO_LOAD : 'Enter URL here',
-    IMPORT_FROM_FILE : 'Import from a file on your computer',
     LOAD_A_FILE : 'Load the file',
     EVENTS : 'Events',
     IMPORTS : 'Events to import',
@@ -45,7 +46,17 @@ traj_i18n.config(function ($translateProvider) {
     WHERE : 'Where',
     WHEN : 'When',
     PONCTUAL : 'Event',
-    PERIOD : 'Period'
+    PERIOD : 'Period',
+
+    START_BY_ADDING : 'Start by creating one event',
+    START_BY_EXAMPLE : 'Start from an example',
+    IMPORT_FROM_FILE : 'Import from a file on your computer',
+    START_BY_URL: 'Start with a URL',
+
+    TRAJ_INTRO: 'Traj defines a trajectory in time on Earth.',
+    TRAJ_NO_SERVER : 'Traj has no server. You do not need an account or password.',
+    TRAJ_STORAGE : 'Traj stores data in your browser and you can save it as a file.',
+    TRAJ_SHARE : "You can share one or all events as a simple link."
   });
   $translateProvider.translations('fr', {
     HOME: 'Accueil',
@@ -54,6 +65,7 @@ traj_i18n.config(function ($translateProvider) {
     CREATE : 'Créer',
     LANGUAGE : 'Langue',
     RESULTS : 'Résultats',
+    FILTER : 'Filtrer',
     SEARCH : 'Rechercher',
     LIST : 'Liste',
     MAP : 'Carte',
@@ -62,6 +74,7 @@ traj_i18n.config(function ($translateProvider) {
     DELETE : 'Supprimer',
     EDIT : 'Modifier',
     SHARE : 'Partager',
+    DISCARD : 'Rejeter',
     COORDINATES : 'Coord.',
     URL_TO_LOAD : "Entrer l'URL ici",
     IMPORT_FROM_FILE : 'Importez depuis un fichier sur votre ordinateur',
@@ -90,7 +103,17 @@ traj_i18n.config(function ($translateProvider) {
     WHERE : 'Où',
     WHEN : 'Quand',
     PONCTUAL : 'Événement ponctuel',
-    PERIOD : 'Période'
+    PERIOD : 'Période',
+
+    START_BY_ADDING : 'Commencer en créant un événement',
+    START_BY_EXAMPLE : 'Commencer avec un exemple',
+    IMPORT_FROM_FILE : 'Charger un fichier de votre ordinateur',
+    START_BY_URL: 'Commencer avec une URL',
+
+    TRAJ_INTRO: 'Traj définit des trajectoires, dans le temps sur la Terre.',
+    TRAJ_NO_SERVER : 'Traj ne stocke rien sur un serveur. Pas besoin de compte ou de mot de passe.',
+    TRAJ_STORAGE : 'Traj stocke dans votre navigateur et peut sauver dans un fichier.',
+    TRAJ_SHARE : "Vous pouvez partager un ou tous vos événements avec un simple lien."
   });
   $translateProvider.preferredLanguage('fr');
 });

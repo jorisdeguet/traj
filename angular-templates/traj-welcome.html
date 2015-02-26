@@ -3,48 +3,57 @@
 	<div class="col-md-12">
 		<div class=" well">
 			<h1 class="pull-left"><img src="images/traj-100.png" style="margin-right:30px;" /></h1>
-			<p>Traj est une interface web pour définir votre trajectoire sur la planète, dans le temps.</p>
 			<p>
-				Traj ne stocke aucune information en dehors de votre navigateur.
-				Bas besoin de compte ou de mot de passe.
+				{{'TRAJ_INTRO' | translate}}
 			</p>
 			<p>
-				Nous utilisons soit le stockage du navigateur soit un fichier que vous sauvez où vous le souhaitez.
+				{{'TRAJ_NO_SERVER' | translate}}
 			</p>
 			<p>
-				Vous pouvez partager chaque événement de votre trajectoire par courriel avec vos proches.
+				{{'TRAJ_STORAGE' | translate}}
+			</p>
+			<p>
+				{{'TRAJ_SHARE' | translate}}
 			</p>
 		</div>
 	</div>
 
-	<div class="col-md-4">
-		Commencez tout de suite en ajoutant un événement <a class="btn btn-primary" href="#add">ici</a>
-	</div>
-
-	<div class="col-md-4">
-
-		{{ 'IMPORT_FROM_FILE' | translate}}
-
+	<div class="col-md-3">
 		<div class="well">
-			<input
-			type="file"
-			id="fileForUpload"
-			onchange="angular.element(this).scope().load()" />
+			<h4>{{'START_BY_ADDING' | translate}}</h4>
+			<a class="btn btn-primary" href="#add">{{'ADD' | translate}}</a>
 		</div>
 	</div>
 
-	<div class="col-md-4">
-		Importez depuis un lien qu'on a partagé avec vous:
-		<p><input
+	<div class="col-md-3">
+		<div class="well">
+			<h4>{{ 'IMPORT_FROM_FILE' | translate}}</h4>
+				<input
+				type="file"
+				id="fileForUpload"
+				onchange="angular.element(this).scope().load()" />
+		</div>
+	</div>
+
+	<div class="col-md-3">
+		<div class="well">
+			<h4>{{'START_BY_URL' | translate}}</h4>
+			<input
 			type="test"
 			ng-model="url"
 			id="urlToLoad"
 			placeholder="{{ 'URL_TO_LOAD' | translate}}"
-			/><a href="#url/{{url}}" class="btn btn-primary">Importer depuis l'URL</a></p>
-		<p>
-			Quelques exemples:
-			<a class="btn btn-xs btn-warning" href="#url/http://traj.org/samples/911.json">11 septembre 2001</a>
-			<a class="btn btn-xs btn-warning" href="#url/http://traj.org/samples/darwin.json">La vie de Charles Darwin</a>
-		</p>
+			/>
+			<a href="#url/{{url}}" class="btn btn-primary"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+		</div>
 	</div>
+	<div class="col-md-3">
+		<div class="well">
+			<h4>{{'START_BY_EXAMPLE' | translate}}</h4>
+			<br/><a class="btn btn-xs btn-warning" href="#url/http://traj.org/samples/911.json">9 / 11 (World Trade Center)</a>
+			<br/><a class="btn btn-xs btn-warning" href="#url/http://traj.org/samples/darwin.json">Charles Darwin</a>
+			<br/><a class="btn btn-xs btn-warning" href="#url/http://traj.org/samples/langages.json">Prog Lang</a>
+		</div>
+	</div>
+
 </div>

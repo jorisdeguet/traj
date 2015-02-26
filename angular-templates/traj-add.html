@@ -37,9 +37,6 @@
 					placeholder="{{ 'PLACE_HINT' | translate}}" required>
 	      <input class="btn btn-primary btn-mini" type="button" value="Geocode" ng-click="codeAddress()">
 
-				<!-- <p>
-					<span class="label label-danger" ng-show="event.lat == undefined">{{ 'ERROR_COORDINATES' | translate}}</span>
-				</p> -->
 				<div  map-canvas2  id="map-canvas" style="height:250px;width:100%;"></div>
 
 		</div>
@@ -110,7 +107,7 @@
 			<button ng-click="add(event)" class="btn btn-lg btn-primary btn-block">{{ 'SAVE' | translate}}</button>
 			<!-- ng-disabled="addform.title.$invalid ||addform.place.$invalid" -->
 
-			<pre>TOCREATE = {{event | json}}</pre>
+			<!-- <pre>TOCREATE = {{event | json}}</pre> -->
 		</div>
 	</form>
 
