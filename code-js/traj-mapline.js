@@ -1,4 +1,4 @@
-traj.controller('MainController', function ($scope, eventService, $location) {
+traj.controller('MainController', function ($scope, eventService, $filter, $location) {
 
 
   // http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=A|FEFF69
@@ -12,6 +12,47 @@ traj.controller('MainController', function ($scope, eventService, $location) {
     return $scope.selectedEvent.title != undefined;
   }
 
+  $scope.isFirst = function(){
+    var sorted = $filter('orderBy')(eventService.traj, 'date');
+    return $scope.isSelected() && sorted[0].id == $scope.selectedEvent.id;
+  }
+
+  $scope.isLast = function(){
+    var sorted = $filter('orderBy')(eventService.traj, 'date');
+    return $scope.isSelected() && sorted[sorted.length-1].id == $scope.selectedEvent.id;
+  }
+
+  $scope.next = function(){
+    var sorted = $filter('orderBy')(eventService.traj, 'date');
+    for (var i = 0 ; i < sorted.length ; i++){
+      if (sorted[i].id == $scope.selectedEvent.id){
+        $scope.select(sorted[i+1]);
+        return 0;
+      }
+    }
+  }
+
+  $scope.prev = function(){
+    var sorted = $filter('orderBy')(eventService.traj, 'date');
+    for (var i = 0 ; i < sorted.length ; i++){
+      if (sorted[i].id == $scope.selectedEvent.id){
+        $scope.select(sorted[i-1]);
+        return 0;
+      }
+    }
+  }
+
+  $scope.safeApply = function(fn) {
+    var phase = this.$root.$$phase;
+    if(phase == '$apply' || phase == '$digest') {
+      if(fn && (typeof(fn) === 'function')) {
+        fn();
+      }
+    } else {
+      this.$apply(fn);
+    }
+  };
+
   $scope.select = function(evt){
     // in the timeline
     timeline.moveTo(evt.date);
@@ -23,7 +64,7 @@ traj.controller('MainController', function ($scope, eventService, $location) {
     map.panTo(mark.getPosition());
     info.close();//hide the infowindow
     info.setContent('<p>'+evt.title+'</p>');
-    $scope.$apply(function(){
+    $scope.safeApply(function(){
       $scope.selectedEvent = evt;
     });
     $('#title').html($scope.selectedEvent.title);

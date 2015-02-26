@@ -15,10 +15,10 @@
 	</div>
 	<div class="col-md-4" style="height:350px;overflow:scroll;" ng-show="isSelected()">
 		<p>
-			<a href="#edit/{{selectedEvent.id}}" class="btn btn-warning">
+			<a ng-hide="isFirst()" ng-click="prev()" class="btn btn-warning">
 				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 			</a>
-			<a href="#edit/{{selectedEvent.id}}" class="btn btn-warning">
+			<a ng-hide="isLast()" ng-click="next()" class="btn btn-warning">
 				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 			</a>
 			<a href="#edit/{{selectedEvent.id}}" class="btn btn-warning">{{'EDIT' | translate}}</a>
