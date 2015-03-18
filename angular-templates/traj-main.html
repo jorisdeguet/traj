@@ -37,7 +37,7 @@
 			<div class="panel-body">
 				<p>
 					{{'DATE' | translate}} : {{selectedEvent.date | date : 'yyyy.MM.dd HH:mm'}}
-					<span ng-show="selectedEvent.type === 'Period'"> >> {{selectedEvent.date | date : 'yyyy.MM.dd HH:mm'}} </span>
+					<span ng-show="selectedEvent.type === 'Period'"> >> {{selectedEvent.end | date : 'yyyy.MM.dd HH:mm'}} </span>
 				</p>
 
 			</div>
