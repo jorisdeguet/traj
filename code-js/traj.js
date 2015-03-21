@@ -70,6 +70,7 @@ traj.config( [
 traj.controller('LocaleController', function ($scope, $translate) {
 	$scope.changeLanguage = function (key) {
 		$translate.use(key);
+    console.log($translate.use());
 	};
 });
 
@@ -279,7 +280,9 @@ traj.controller('ShareController', function ($scope, eventService, $routeParams)
 
 
 
-traj.controller('WelcomeController', function ($scope, $http, eventService, $route, $location) {
+traj.controller('WelcomeController', function ($scope, $http, eventService,$translate, $route, $location) {
+  $scope.translate = $translate;
+
   $scope.loadFromURL = function(){
     var url = document.getElementById("urlToLoad").value;
     console.log("From URL "  +url);
