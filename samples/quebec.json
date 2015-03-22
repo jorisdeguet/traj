@@ -1,0 +1,32 @@
+[
+  {
+    "type": "Ponctual",
+    "date": "1534-07-23T04:00:00.000Z",
+    "place": "Gaspé",
+    "lng": -64.48690160000001,
+    "lat": 48.8316351,
+    "title": "Jacques Cartier prend possession du territoire",
+    "description": "Jacques Cartier plante une croix et prend possession du territoire au nom du roi de France.",
+    "id": "b344e51c-5d21-442c-8bdd-4e2579e8a6c4"
+  },
+  {
+    "type": "Ponctual",
+    "date": "1534-05-10T04:00:00.000Z",
+    "place": "Terre Neuve",
+    "lng": -56.33304079999999,
+    "lat": 48.6064556,
+    "title": "Jacques Cartier atteint Terre Neuve",
+    "description": "Après seulement 20 jours de traversée",
+    "id": "ccef3b88-acba-43c8-9745-1f8a1b7072c3"
+  },
+  {
+    "type": "Ponctual",
+    "date": "1534-09-05T04:00:00.000Z",
+    "title": "Retour à Saint-Malo",
+    "place": "Saint Malo",
+    "lng": -2.025673999999981,
+    "lat": 48.649337,
+    "description": "après 21 jours de traversée",
+    "id": "fa4cd8d9-7d5a-45dc-bed1-353eb41c99d4"
+  }
+]
