@@ -28,5 +28,218 @@
     "lat": 48.649337,
     "description": "après 21 jours de traversée",
     "id": "fa4cd8d9-7d5a-45dc-bed1-353eb41c99d4"
+  },
+  {
+    "type": "Ponctual",
+    "date": "1608-07-03T04:00:00.000Z",
+    "place": "Québec, Québec",
+    "lng": -71.242796,
+    "lat": 46.8032826,
+    "title": "Fondation de la ville de Québec",
+    "description": "Fondation par Samuel de Champlain et Pierre Dugua accompagné de 28 hommes.",
+    "id": "9567da4e-a466-4f15-9327-ee320f16c4a3"
+  },
+  {
+    "type": "Ponctual",
+    "date": "1535-10-02T04:00:00.000Z",
+    "place": "Montreal, Canada",
+    "title": "Jacques Cartier visite Hochelaga",
+    "description": "L'explorateur européen visite le village fortifié qui compte 1500 habitants iroquois.",
+    "lng": -73.56725599999999,
+    "lat": 45.5016889,
+    "id": "5ae41025-bd09-4765-a6b6-fc8110e1ddb2"
+  },
+  {
+    "type": "Ponctual",
+    "date": "1642-05-17T04:00:00.000Z",
+    "place": "Pointe a callieres, Montreal",
+    "lng": -73.55416680000002,
+    "lat": 45.5026511,
+    "title": "Fondation de Ville-Marie",
+    "description": "Début de l'occupation permanente par des européens",
+    "id": "ea5e1073-b14a-41b5-9cc6-5b8eec88ea32"
+  },
+  {
+    "type": "Period",
+    "description": "http://fr.wikipedia.org/wiki/Exposition_universelle_de_1967",
+    "date": "1967-04-21T05:00:00.000Z",
+    "title": "Exposition universelle de Montréal",
+    "place": "Parc Jean Drapeau, Québec",
+    "lng": -73.53402970000002,
+    "lat": 45.5160948,
+    "end": "1967-10-27T04:00:00.000Z",
+    "id": "d8276d78-9b86-4453-be4b-7e793dc3ca7d"
+  },
+  {
+    "type": "Ponctual",
+    "title": "Fondation de Trois-Rivières",
+    "description": "Par Laviolette",
+    "date": "1634-07-04T04:00:00.000Z",
+    "place": "Trois Rivieres Québec",
+    "lng": -72.5432834,
+    "lat": 46.3432397,
+    "id": "6ddc783c-105d-4c0c-bb47-8c310e78aa4b"
+  },
+  {
+    "type": "Ponctual",
+    "title": "Arrivée des premières \"filles du Roi\"",
+    "description": "",
+    "date": "1663-09-22T04:00:00.000Z",
+    "place": "Maison Saint Gabriel, Montreal",
+    "lng": -73.55590910000001,
+    "lat": 45.4759574,
+    "id": "2f40033e-d085-45f4-b250-eaec4c59b347"
+  },
+  {
+    "type": "Ponctual",
+    "title": "Sanction royale du \"Quebec Act 1774\"",
+    "description": "Le parlement brittanique accorde:\n- une extension du territoire de la province du Québec\n- la possibilité pour des catholiques d'accéder à la fonction publique.",
+    "date": "1774-06-22T04:00:00.000Z",
+    "place": "Buckingham palace",
+    "lng": -0.1418899999999894,
+    "lat": 51.501364,
+    "id": "89142445-7e87-4435-9b1f-f0d7bf4d1ce7"
+  },
+  {
+    "type": "Ponctual",
+    "description": "Le parlement brittanique:\n- division de la provinve de Québec en Haut Canada et Bas Canada\n- mise en place d'assemblées pour les 2 nouvelles entités.\n\n\nhttp://fr.wikipedia.org/wiki/Acte_constitutionnel",
+    "date": "1791-06-10T04:00:00.000Z",
+    "place": "Brittish parlement",
+    "lng": -0.12756430000001728,
+    "lat": 51.4955605,
+    "title": "Acte Constitutionnel (Bas/Haut Canada)",
+    "id": "4f0cdf5e-f9f3-4993-ad9c-8b1cd589f33f"
+  },
+  {
+    "type": "Ponctual",
+    "title": "Bataille des plaines d'Abraham",
+    "description": "Cette bataille marque la fin de la domination française et le début de la conquête britannique.\n\nhttp://fr.wikipedia.org/wiki/Bataille_des_plaines_d%27Abraham",
+    "date": "1759-09-13T04:00:00.000Z",
+    "place": "Plaines d'Abraham Québec",
+    "lng": -71.21739689999998,
+    "lat": 46.8015014,
+    "id": "a9ef5774-236a-4a9e-82b3-49d32dbbfb78"
+  },
+  {
+    "type": "Ponctual",
+    "title": "Arrivée de Jean Talon en tant qu'intendant",
+    "description": "Il est le deuxième intendant mais le premier à se rendre sur le territoire.",
+    "place": "Québec, Québec",
+    "lng": -71.242796,
+    "lat": 46.8032826,
+    "date": "1665-09-12T04:00:00.000Z",
+    "id": "716a3107-5e55-492e-9f74-15213b8ac851"
+  },
+  {
+    "type": "Ponctual",
+    "place": "Chateau de Versailles",
+    "lng": 2.120355399999994,
+    "lat": 48.8048649,
+    "description": "Jean Talon reçoit du roi la charge d'Intendant pour le Canada, l'Acadie et Terre-Neuve.\n\nhttp://fr.wikipedia.org/wiki/Jean_Talon",
+    "title": "Jean Talon devient intendant de Nouvelle-France",
+    "date": "1665-03-23T05:00:00.000Z",
+    "id": "1810da40-e194-406b-9672-616d0ccfa1ae"
+  },
+  {
+    "type": "Ponctual",
+    "title": "Signature du traité de Paris",
+    "description": "La France abandonne le Canada à l'empire britannique.",
+    "date": "1763-02-10T05:00:00.000Z",
+    "place": "Fontainebleau, France",
+    "lng": 2.701620000000048,
+    "lat": 48.40467599999999,
+    "id": "0ed07485-1289-41d6-837e-7ec03b9d4fca"
+  },
+  {
+    "type": "Ponctual",
+    "title": "Louis Robert devient premier intendant",
+    "description": "Louis XIV transforme la Nouvelle-France en province et nomme un premier intendant chargé de mettre en place les nouvelles structures administratives.",
+    "date": "1663-03-21T05:00:00.000Z",
+    "place": "Chateau de Versailles",
+    "lng": 2.120355399999994,
+    "lat": 48.8048649,
+    "id": "0715eab0-daa3-4585-920b-f1df2c4dc6c4"
+  },
+  {
+    "type": "Ponctual",
+    "title": "Proclamation Royale",
+    "description": "George III proclame la \"Province of Quebec\" et définit les institutions britanniques qui la régiront.\n\nhttp://fr.wikipedia.org/wiki/Proclamation_royale_de_1763",
+    "date": "1763-10-07T04:00:00.000Z",
+    "place": "Saint James Palace",
+    "lng": -0.13782689999993636,
+    "lat": 51.5045855,
+    "id": "0acbe03a-9019-40a1-bc29-3e82b4646113"
+  },
+  {
+    "type": "Ponctual",
+    "title": "Adoption des 92 résolutions",
+    "description": "Louis-Joseph Papineau et le parti des patriotes font adopter un texte qui annonce la Révolte des Patriotes\n\n\nhttp://fr.wikipedia.org/wiki/92_r%C3%A9solutions",
+    "date": "1834-02-21T05:00:00.000Z",
+    "place": "Hotel du parlement, Québec",
+    "lng": -71.21418189999997,
+    "lat": 46.80870909999999,
+    "id": "7dd38a05-b8f0-4f71-bef6-a1e42f89a73d"
+  },
+  {
+    "type": "Ponctual",
+    "description": "L'armée britannique intervient pour contenir une émeute au cours de l'élection.\n\nCela aboutira à la mort de 3 patriotes : François Languedoc, Pierre Billette et Casimir Chauvin\n\nhttp://fr.wikipedia.org/wiki/R%C3%A9bellion_des_Patriotes#L.27.C3.A9lection_du_21_mai_1832",
+    "title": "Elections du 21 mai 1832",
+    "tags": "Patriotes",
+    "date": "1832-05-21T04:00:00.000Z",
+    "place": "Montreal, Canada",
+    "lng": -73.56725599999999,
+    "lat": 45.5016889,
+    "id": "16001ace-43cd-406f-bb5c-1910bd140e1b"
+  },
+  {
+    "type": "Ponctual",
+    "title": "Publication du \"Union Act\"",
+    "description": "Réunion du Haut Canada et Bas Canada en une seule \"Province of Canada\".\n\nEn conséquence, les canadiens francophones qui étaient majoritaires dans le Bas Canada deviennent minoritaire dans l'assemblée unifiée.\n\nhttp://fr.wikipedia.org/wiki/Acte_d%27Union_%281840%29",
+    "date": "1841-02-10T05:00:00.000Z",
+    "place": "British Parlement",
+    "lng": -0.12756430000001728,
+    "lat": 51.4955605,
+    "id": "d17bbec3-5750-4f2b-af18-9089b8ae4a0f"
+  },
+  {
+    "type": "Ponctual",
+    "description": "Création du Dominion du Canada.\n\nÉgalement connue sous le nom de Loi constitutionnelle de 1867\n\nhttp://fr.wikipedia.org/wiki/Actes_de_l%27Am%C3%A9rique_du_Nord_britannique",
+    "date": "1867-05-24T04:00:00.000Z",
+    "title": "Sanction Royale pour l'Acte de l'Amérique du Nord",
+    "place": "British Parlement",
+    "lng": -0.12756430000001728,
+    "lat": 51.4955605,
+    "id": "1b22dab0-d536-4a76-8bbd-17d81fed852e"
+  },
+  {
+    "type": "Period",
+    "description": "Cette période est également appelée Grande Noirceur.\n\nhttp://fr.wikipedia.org/wiki/Grande_Noirceur",
+    "title": "Maurice Duplessis est premier ministre",
+    "date": "1944-08-30T04:00:00.000Z",
+    "end": "1959-09-07T04:00:00.000Z",
+    "place": "Québec, Québec",
+    "lng": -71.242796,
+    "lat": 46.8032826,
+    "id": "984dc88c-bb9f-4d6a-a1c3-0792e07f3e72"
+  },
+  {
+    "type": "Ponctual",
+    "description": "http://fr.wikipedia.org/wiki/Drapeau_du_Qu%C3%A9bec",
+    "date": "1948-01-21T20:00:00.000Z",
+    "title": "Adoption du drapeau du Québec",
+    "place": "Québec, Québec",
+    "lng": -71.242796,
+    "lat": 46.8032826,
+    "id": "5d2ac684-1d14-4462-bd9f-d99848ff1f7a"
+  },
+  {
+    "type": "Ponctual",
+    "title": "Adoption de la loi 101",
+    "description": "Loi de francisation.\n\nhttp://fr.wikipedia.org/wiki/Charte_de_la_langue_fran%C3%A7aise",
+    "date": "1977-08-26T04:00:00.000Z",
+    "place": "Assemblée Nationale du Québec",
+    "lng": -71.2149187,
+    "lat": 46.8094426,
+    "id": "11ec9af4-3fa2-496d-bf6b-099e99652ff5"
   }
 ]
