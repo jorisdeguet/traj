@@ -26,6 +26,9 @@ traj.config(['$routeProvider',
 		templateUrl: 'angular-templates/traj-welcome.html',
 		controller: 'WelcomeController'
 	}).
+  when('/infos', {
+		templateUrl: 'angular-templates/traj-about.html'
+	}).
   when('/import/:data', {
     templateUrl: 'angular-templates/traj-import.html',
     controller: 'ImportController'

@@ -3,6 +3,7 @@ var traj_i18n = angular.module('traj.i18n', ['pascalprecht.translate']);
 traj_i18n.config(function ($translateProvider) {
   $translateProvider.translations('en', {
     HOME: 'Home',
+    ABOUT : 'About',
     YES : 'Yes',
     NO : 'No',
     CREATE : 'Create',
@@ -32,6 +33,7 @@ traj_i18n.config(function ($translateProvider) {
     PLACE : 'Place',
     PLACE_HINT :'Address or coordinates',
     SELECT_AN_EVENT : 'Click on an event to see the details (on map or timeline)',
+    HERE_IS_THE_LINK : 'Here is the link to share',
 
     ERROR_TITLE : 'Please enter a Title',
     ERROR_DESCRIPTION : 'Please enter a Description',
@@ -60,6 +62,7 @@ traj_i18n.config(function ($translateProvider) {
   });
   $translateProvider.translations('fr', {
     HOME: 'Accueil',
+    ABOUT : 'A propos',
     YES:'Oui',
     NO : 'Non',
     CREATE : 'Créer',
@@ -89,6 +92,7 @@ traj_i18n.config(function ($translateProvider) {
     PLACE : 'Lieu',
     PLACE_HINT :'Adresse ou coordonnées',
     SELECT_AN_EVENT : 'Sélectionner un événement sur la carte ou la ligne de temps pour voir le détail',
+    HERE_IS_THE_LINK : 'Voici votre lien à partager',
 
     ERROR_TITLE : 'Veuillez entrer un titre',
     ERROR_DESCRIPTION : 'Veuillez entrer une description',
@@ -114,6 +118,65 @@ traj_i18n.config(function ($translateProvider) {
     TRAJ_NO_SERVER : 'Traj ne stocke rien sur un serveur. Pas besoin de compte ou de mot de passe.',
     TRAJ_STORAGE : 'Traj stocke dans votre navigateur et peut sauver dans un fichier.',
     TRAJ_SHARE : "Vous pouvez partager un ou tous vos événements avec un simple lien."
+  });
+  $translateProvider.translations('es', {
+    HOME: 'Inicio',
+    ABOUT : 'Acerca de',
+    YES:'Si',
+    NO : 'No',
+    CREATE : 'Crear',
+    LANGUAGE : 'Idioma',
+    RESULTS : 'Resultados',
+    FILTER : 'Filtro',
+    SEARCH : 'Buscar',
+    LIST : 'Lista',
+    MAP : 'Mapa',
+    ADD : 'Agregar',
+    SAVE : 'Guardar',
+    DELETE : 'Eliminar',
+    EDIT : 'Modificar',
+    SHARE : 'Compartir',
+    DISCARD : 'Descartar',
+    COORDINATES : 'Coordenadas',
+    URL_TO_LOAD : "Entrar la URL aquí",
+    IMPORT_FROM_FILE : 'Importar un fichero de su ordenador',
+    LOAD_A_FILE : 'Cargue el fichero',
+    EVENTS : 'Eventos',
+    IMPORTS : 'Eventos para importar',
+    IMPORT : 'Importar',
+    FLUSH : 'Eliminar todo',
+    TITLE : 'Título',
+    DESCRIPTION : 'Descripción',
+    DATE : 'Fecha',
+    PLACE : 'Lugar',
+    PLACE_HINT :'Dirección o coordenadas',
+    SELECT_AN_EVENT : 'Seleccionar un evento en el mapa o en la línea de tiempo para ver el detalle',
+    HERE_IS_THE_LINK : 'Aquí está la URL para compartir',
+
+    ERROR_TITLE : 'Entre un título',
+    ERROR_DESCRIPTION : 'Entre una descripción',
+    ERROR_PLACE : 'Entre un lugar',
+    ERROR_COORDINATES : 'Ponga un marcador o presione sobre Geocode',
+    ERROR_DATE : 'Seleccione una fecha',
+    ERROR_DATE_END : 'Seleccione una fecha de fin',
+    ERROR_DATE_SWAP : 'La fecha de fin es anterior a la fecha de inicio',
+    ERROR_GEOCODER : 'Ne se encuentra nada par esta dirección',
+
+    WHAT : 'Qué',
+    WHERE : 'Donde',
+    WHEN : 'Cuando',
+    PONCTUAL : 'Evento puntual',
+    PERIOD : 'Periodo',
+
+    START_BY_ADDING : 'Comenzar creando un evento',
+    START_BY_EXAMPLE : 'Comenzar con un ejemplo',
+    IMPORT_FROM_FILE : 'Cargar un fichero de su ordenador',
+    START_BY_URL: 'Comenzar con una URL',
+
+    TRAJ_INTRO: 'Traj define las trayectorias en el tiempo y en la Tierra.',
+    TRAJ_NO_SERVER : 'Traj no almacena nada sobre un servidor. No hay necesidad de una cuenta o de una contraseña.',
+    TRAJ_STORAGE : 'Traj almacena en su navegador y puede guardar en un fichero.',
+    TRAJ_SHARE : "Usted puede compartir uno o todos sus eventos con una simple URL."
   });
   $translateProvider.preferredLanguage('fr');
 });
