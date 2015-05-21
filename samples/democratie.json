@@ -1,0 +1,52 @@
+[
+  {
+    "type": "Ponctual",
+    "place": "Wellington Nouvelle Zélande",
+    "date": "1893-01-01T05:00:00.000Z",
+    "lng": 174.77623600000004,
+    "lat": -41.2864603,
+    "title": "Nouvelle Zélande accorde le droit de vote aux femmes",
+    "description": "C'est le premier pays à accorder ce droit de manière définitive.",
+    "id": "eeff179c-7b66-48c0-95ce-bfb78173db61"
+  },
+  {
+    "type": "Ponctual",
+    "place": "Lyttelton, Nouvelle-Zélande",
+    "lng": 172.71932270000002,
+    "lat": -43.6032583,
+    "date": "1933-01-01T05:00:00.000Z",
+    "title": "Election Elizabeth McCombs",
+    "description": "Première représentante élue dans une assemblée.\n\nhttp://www.nzhistory.net.nz/politics/parliaments-people/women-mps",
+    "id": "58211515-6d8f-4396-b9a4-76561f46c442"
+  },
+  {
+    "type": "Ponctual",
+    "description": "Instaure un régime républicain.",
+    "date": "1787-09-17T04:00:00.000Z",
+    "title": "Rédaction de la constitution des États-Unis",
+    "place": "Philadelphia, USA",
+    "lng": -75.16522150000003,
+    "lat": 39.9525839,
+    "id": "dc77c847-9e4b-4d5c-922e-c56e55d97ed3"
+  },
+  {
+    "type": "Ponctual",
+    "description": "Suite à la révolution française, instauration de la première république française après une période de monarchie constitutionnelle.\n\nPremière nation à instaurer le suffrage \"universel\". Tous les hommes peuvent voter sans condition de resources financières ou autre.",
+    "date": "1792-08-10T04:00:00.000Z",
+    "title": "Première République Française",
+    "place": "Paris, France",
+    "lng": 2.3522219000000177,
+    "lat": 48.856614,
+    "id": "67e5f854-0100-4fbf-a2ce-d1ebaa4a0298"
+  },
+  {
+    "type": "Ponctual",
+    "description": "Instaure le principe de la monarchie parlementaire à travers un parlement indépendant du monarche.",
+    "date": "1689-12-16T05:00:00.000Z",
+    "place": "London, UK",
+    "lng": -0.12775829999998223,
+    "lat": 51.5073509,
+    "title": "Bill of Rights",
+    "id": "c91c6c52-88a2-4fa1-a07a-d4ea36702d6a"
+  }
+]
