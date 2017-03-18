@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 540 720" width="540pt" height="60pc" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <metadata> Produced by OmniGraffle 7.2.2 
+    <dc:date>2015-02-04 13:55:28 +0000</dc:date>
+  </metadata>
+  <defs>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" viewBox="-1 -2 4 4" markerWidth="4" markerHeight="4" color="black">
+      <g>
+        <path d="M 1.12 0 L 0 -.42 L 0 .42 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+  </defs>
+  <g stroke="none" stroke-opacity="1" stroke-dasharray="none" fill="none" fill-opacity="1">
+    <title>Canevas 1</title>
+    <rect fill="white" width="540" height="720"/>
+    <g>
+      <title>Calque 1</title>
+      <line x1="71" y1="112.66406" x2="195.24946" y2="110.43064" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="10"/>
+      <line x1="250.64062" y1="112.49219" x2="410.3828" y2="112.66406" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="10"/>
+      <path d="M 371.6034 112.62234 C 365.91454 166.19078 388.35825 244.0702 354.53516 273.34375 C 325.15465 298.7723 253.30232 287.5382 194.32414 287.41163" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="10"/>
+      <line x1="114.36419" y1="111.88458" x2="115.10156" y2="257.51172" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="10"/>
+      <line x1="157" y1="135.14062" x2="157" y2="255.90234" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="10"/>
+      <path d="M 157 135.14062 C 180.995 135.14062 217.11057 126.37652 228.9922 135.14062 C 240.87381 143.90472 238.13118 178.04003 228.29688 187.73047 C 218.46258 197.4209 170.79094 191.09592 169.98047 193.28906 C 169.17 195.4822 213.20805 190.45612 223.4336 200.89062 C 229.34124 206.919 230.18215 218.22348 230.3471 230.23126" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="10"/>
+      <path d="M 265.20703 256.0703 C 264.43888 220.90325 252.2504 169.27156 262.90234 150.55859 C 273.55427 131.84562 316.9309 126.22571 329.125 143.78125 C 341.3191 161.33679 333.75805 218.53238 336.0742 255.90234" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="10"/>
+      <line x1="258.59517" y1="178.42504" x2="312.09994" y2="199.05017" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="10"/>
+    </g>
+  </g>
+</svg>
